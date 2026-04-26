@@ -1,0 +1,1919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>Shabbir Hussain K — Data Engineer & Analyst Portfolio</title>
+<meta name="description" content="Portfolio of Shabbir Hussain K — Data Analyst & Jr Data Engineer at Bayer. Power BI, Azure ADF, Databricks, SQL, Medallion Architecture."/>
+<meta name="keywords" content="Shabbir Hussain K, Data Analyst, Data Engineer, Power BI, Azure, Databricks, SQL, Bayer, Portfolio"/>
+<meta name="author" content="Shabbir Hussain K"/>
+<meta property="og:title" content="Shabbir Hussain K — Data Portfolio"/>
+<meta property="og:description" content="Transforming complex data into strategic insights. 3+ years at Bayer."/>
+<meta property="og:type" content="website"/>
+<meta property="og:image" content="https://shabbirhussaink.dev/og-image.jpg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="theme-color" content="#04080f"/>
+<meta name="msapplication-TileColor" content="#04080f"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:#04080f;font-family:'Inter',system-ui,sans-serif;overflow-x:hidden;color:#e8dfc8;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body.light{background:#f0ece4}
+#root{min-height:100vh;position:relative;z-index:2}
+
+#cur{width:8px;height:8px;border-radius:50%;background:#c9a84c;position:fixed;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);transition:transform .08s,background .3s;mix-blend-mode:difference;box-shadow:0 0 20px rgba(201,168,76,.6)}
+#cur-r{width:40px;height:40px;border-radius:50%;border:1px solid rgba(201,168,76,.4);position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:all .15s cubic-bezier(.23,1,.32,1);opacity:.5}
+#cur-r.hover{width:60px;height:60px;border-color:rgba(201,168,76,.8);opacity:.8}
+body.mobile #cur,body.mobile #cur-r{display:none!important}
+
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#c9a84c,#8b6914);border-radius:3px}
+
+#grain{position:fixed;inset:0;pointer-events:none;z-index:9997;opacity:.035;mix-blend-mode:overlay}
+#grain canvas{width:100%;height:100%}
+
+#vignette{position:fixed;inset:0;pointer-events:none;z-index:9996;background:radial-gradient(ellipse at center,transparent 40%,rgba(0,0,0,.6) 100%);mix-blend-mode:multiply}
+
+#spotlight{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0;transition:opacity 1.2s;background:radial-gradient(600px circle at var(--sx,50%) var(--sy,50%),rgba(201,168,76,.08),transparent 40%);mix-blend-mode:screen}
+
+#preloader{position:fixed;inset:0;z-index:100000;background:#04080f;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 1s cubic-bezier(.76,0,.24,1),visibility 1s}
+#preloader.done{opacity:0;visibility:hidden}
+.preloader-text{font-family:'Cinzel',serif;font-size:14px;letter-spacing:8px;color:#c9a84c;text-transform:uppercase;margin-bottom:40px;opacity:0;animation:preTextIn 1s ease forwards .3s}
+.preloader-bar{width:200px;height:1px;background:rgba(201,168,76,.15);position:relative;overflow:hidden}
+.preloader-bar::after{content:'';position:absolute;left:0;top:0;height:100%;width:0;background:linear-gradient(90deg,#c9a84c,#f0d78c,#c9a84c);animation:preBarFill 2.2s cubic-bezier(.76,0,.24,1) forwards .5s}
+.preloader-percent{font-family:'JetBrains Mono',monospace;font-size:11px;color:#c9a84c;margin-top:20px;letter-spacing:2px;opacity:0;animation:preTextIn 1s ease forwards .8s}
+@keyframes preTextIn{to{opacity:1}}
+@keyframes preBarFill{0%{width:0;left:0}50%{width:100%;left:0}100%{width:0;left:100%}}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+@keyframes slideLeft{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:none}}
+@keyframes slideRight{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:none}}
+@keyframes charReveal{from{opacity:0;transform:translateY(100%) rotateX(-90deg)}to{opacity:1;transform:none}}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 20px rgba(201,168,76,.3)}50%{box-shadow:0 0 40px rgba(201,168,76,.6)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes spinSlow{to{transform:rotate(360deg)}}
+@keyframes spinSlowRev{to{transform:rotate(-360deg)}}
+@keyframes breathe{0%,100%{opacity:.4}50%{opacity:.8}}
+@keyframes scanline{0%{transform:translateY(-100%)}100%{transform:translateY(100vh)}}
+@keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes borderRotate{0%{--angle:0deg}100%{--angle:360deg}}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+@property --angle{syntax:'<angle>';initial-value:0deg;inherits:false}
+
+.rv{opacity:0;transform:translateY(30px);transition:all .9s cubic-bezier(.23,1,.32,1)}
+.rv.visible{opacity:1;transform:none}
+
+.scanline{position:fixed;inset:0;pointer-events:none;z-index:9995;overflow:hidden}
+.scanline::before{content:'';position:absolute;width:100%;height:2px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.1),transparent);animation:scanline 8s linear infinite}
+
+/* ─── MARQUEE ─── */
+.marquee-container{overflow:hidden;white-space:nowrap;position:relative}
+.marquee-content{display:inline-block;animation:marquee 30s linear infinite}
+
+/* ─── 3D CARD TILT ─── */
+.tilt-card{transform-style:preserve-3d;transition:transform .3s ease}
+.tilt-card-inner{transform:translateZ(20px)}
+
+/* ─── MAGNETIC BUTTON ─── */
+.magnetic-btn{transition:transform .3s cubic-bezier(.23,1,.32,1)}
+
+/* ─── HORIZONTAL SCROLL ─── */
+.hscroll-container{display:flex;gap:28px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:20px}
+.hscroll-container::-webkit-scrollbar{display:none}
+.hscroll-item{scroll-snap-align:start;flex-shrink:0}
+
+/* ─── AMBIENT MESH BG ─── */
+.ambient-mesh{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.ambient-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.15;animation:float 20s ease-in-out infinite}
+
+/* ─── GLITCH TEXT ─── */
+.glitch{position:relative}
+.glitch::before,.glitch::after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;height:100%}
+.glitch::before{left:2px;text-shadow:-1px 0 #ff0000;clip:rect(24px,550px,90px,0);animation:glitch-anim-1 3s infinite linear alternate-reverse}
+.glitch::after{left:-2px;text-shadow:-1px 0 #00ff00;clip:rect(85px,550px,140px,0);animation:glitch-anim-2 2.5s infinite linear alternate-reverse}
+@keyframes glitch-anim-1{0%{clip:rect(20px,9999px,15px,0)}20%{clip:rect(60px,9999px,70px,0)}40%{clip:rect(20px,9999px,25px,0)}60%{clip:rect(80px,9999px,5px,0)}80%{clip:rect(10px,9999px,60px,0)}100%{clip:rect(50px,9999px,30px,0)}}
+@keyframes glitch-anim-2{0%{clip:rect(25px,9999px,90px,0)}20%{clip:rect(10px,9999px,30px,0)}40%{clip:rect(80px,9999px,5px,0)}60%{clip:rect(20px,9999px,60px,0)}80%{clip:rect(60px,9999px,20px,0)}100%{clip:rect(5px,9999px,80px,0)}}
+
+/* ─── TYPEWRITER ─── */
+.typewriter{overflow:hidden;border-right:2px solid #c9a84c;white-space:nowrap;animation:typewriter 2s steps(40,end),blink .75s step-end infinite}
+
+/* ─── INFOMETRIC BAR ─── */
+.infometric-bar{height:6px;background:rgba(201,168,76,.1);border-radius:3px;overflow:hidden;position:relative}
+.infometric-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,#c9a84c,#f0d78c);position:relative;overflow:hidden}
+.infometric-bar-fill::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);animation:shimmer 2s infinite}
+@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+
+/* ─── TIMELINE ─── */
+.timeline-line{position:absolute;left:20px;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,#c9a84c,transparent)}
+.timeline-dot{width:12px;height:12px;border-radius:50%;background:#c9a84c;border:3px solid #04080f;position:absolute;left:14px;box-shadow:0 0 12px rgba(201,168,76,.5)}
+
+/* ─── ROLE CARD ─── */
+.role-card{background:linear-gradient(135deg,rgba(201,168,76,.05),rgba(201,168,76,.02));border:1px solid rgba(201,168,76,.15);border-radius:16px;padding:28px;position:relative;overflow:hidden;transition:all .4s cubic-bezier(.23,1,.32,1)}
+.role-card::before{content:'';position:absolute;inset:0;border-radius:16px;padding:1px;background:linear-gradient(var(--angle),rgba(201,168,76,.3),transparent,rgba(201,168,76,.3));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:borderRotate 4s linear infinite;opacity:0;transition:opacity .4s}
+.role-card:hover::before{opacity:1}
+.role-card:hover{transform:translateY(-8px);border-color:rgba(201,168,76,.3);box-shadow:0 20px 60px rgba(201,168,76,.1)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:768px){
+  .hscroll-container{gap:16px}
+  #cur,#cur-r{display:none!important}
+  body.mobile #cur,body.mobile #cur-r{display:none!important}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div id="preloader">
+  <div class="preloader-text">Shabbir Hussain K</div>
+  <div class="preloader-bar"></div>
+  <div class="preloader-percent">Loading Portfolio...</div>
+</div>
+<div id="grain"><canvas id="grainCanvas"></canvas></div>
+<div id="vignette"></div>
+<div id="spotlight"></div>
+<div class="scanline"></div>
+<div id="cur"></div>
+<div id="cur-r"></div>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useEffect, useRef, useCallback, useMemo } = React;
+
+// ═══════════════════════════════════════════════════════════════
+//  VISITOR SYSTEM — Name capture, welcome prompt, no duplicates
+// ═══════════════════════════════════════════════════════════════
+const VisitorSystem = {
+  STORAGE_KEY: 'sh_visitors_v2',
+  WELCOMED_KEY: 'sh_welcomed',
+
+  hasBeenWelcomed() {
+    return sessionStorage.getItem(this.WELCOMED_KEY) === 'true';
+  },
+
+  markWelcomed() {
+    sessionStorage.setItem(this.WELCOMED_KEY, 'true');
+  },
+
+  getVisitorName() {
+    const data = JSON.parse(localStorage.getItem(this.STORAGE_KEY) || '[]');
+    const currentSession = sessionStorage.getItem('sh_session_id');
+    const visitor = data.find(v => v.sessionId === currentSession);
+    return visitor ? visitor.name : null;
+  },
+
+  logVisitor(name) {
+    const now = new Date();
+    const sessionId = 'sess_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    sessionStorage.setItem('sh_session_id', sessionId);
+
+    const existing = JSON.parse(localStorage.getItem(this.STORAGE_KEY) || '[]');
+
+    // Check if this exact name already visited today (prevent duplicates)
+    const today = now.toLocaleDateString('en-IN');
+    const alreadyToday = existing.find(v => v.name === name && v.date === today);
+
+    const entry = {
+      id: Date.now(),
+      sessionId,
+      name: name || 'Anonymous',
+      date: now.toLocaleDateString('en-IN', {day:'2-digit',month:'short',year:'numeric'}),
+      time: now.toLocaleTimeString('en-IN', {hour:'2-digit',minute:'2-digit'}),
+      day: now.toLocaleDateString('en-IN', {weekday:'long'}),
+      tz: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      device: /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop',
+      browser: (() => {
+        const ua = navigator.userAgent;
+        if(ua.includes('Chrome')) return 'Chrome';
+        if(ua.includes('Firefox')) return 'Firefox';
+        if(ua.includes('Safari')) return 'Safari';
+        if(ua.includes('Edge')) return 'Edge';
+        return 'Other';
+      })(),
+      os: (() => {
+        const ua = navigator.userAgent;
+        if(ua.includes('Mac')) return 'macOS';
+        if(ua.includes('Win')) return 'Windows';
+        if(ua.includes('Linux')) return 'Linux';
+        if(ua.includes('Android')) return 'Android';
+        if(ua.includes('iOS')||ua.includes('iPhone')) return 'iOS';
+        return 'Unknown';
+      })(),
+      lang: navigator.language || 'en',
+      screen: `${screen.width}x${screen.height}`,
+      referrer: document.referrer || 'Direct',
+      path: window.location.pathname
+    };
+
+    const updated = [entry, ...existing].slice(0, 500);
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(updated));
+    localStorage.setItem('sh_total', updated.length);
+    return { entry, isDuplicate: !!alreadyToday, total: updated.length };
+  },
+
+  getAll() {
+    return JSON.parse(localStorage.getItem(this.STORAGE_KEY) || '[]');
+  },
+
+  getCount() {
+    return parseInt(localStorage.getItem('sh_total') || '0');
+  },
+
+  exportCSV() {
+    const rows = this.getAll();
+    if(!rows.length) { alert('No visitor data yet.'); return; }
+    const headers = ['ID','Name','Date','Day','Time','Timezone','Device','Browser','OS','Language','Screen','Referrer'];
+    const csv = [headers.join(','), ...rows.map(r =>
+      [r.id,r.name,r.date,r.day,r.time,r.tz,r.device,r.browser,r.os,r.lang,r.screen,r.referrer||''].map(v=>`"${v}"`).join(',')
+    )].join('\n');
+    const blob = new Blob([csv], {type:'text/csv'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `shabbir-visitors-${new Date().toISOString().slice(0,10)}.csv`;
+    a.click();
+  },
+
+  clearAll() {
+    localStorage.removeItem(this.STORAGE_KEY);
+    localStorage.removeItem('sh_total');
+  }
+};
+
+// ═══════════════════════════════════════════════════════════════
+//  OTP SYSTEM — Generates random 6-digit OTP, stores with expiry
+// ═══════════════════════════════════════════════════════════════
+const OTPSystem = {
+  generate() {
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    const expiry = Date.now() + 5 * 60 * 1000; // 5 minutes
+    sessionStorage.setItem('sh_owner_otp', JSON.stringify({otp, expiry}));
+    return otp;
+  },
+
+  verify(inputOtp) {
+    const stored = JSON.parse(sessionStorage.getItem('sh_owner_otp') || '{}');
+    if (!stored.otp || Date.now() > stored.expiry) return false;
+    return stored.otp === inputOtp;
+  },
+
+  clear() {
+    sessionStorage.removeItem('sh_owner_otp');
+  }
+};
+
+// ═══════════════════════════════════════════════════════════════
+//  OPEN ROLES SYSTEM — Editable by owner only
+// ═══════════════════════════════════════════════════════════════
+const RolesSystem = {
+  STORAGE_KEY: 'sh_open_roles',
+
+  getRoles() {
+    const defaultRoles = [
+      {id:1, title:'Data Engineer (Azure/Databricks)', type:'Full-time', location:'Bangalore / Remote', status:'Active', posted:'2026-04-15', description:'Seeking a data engineer with 2+ years experience in Azure Data Factory, Databricks, and SQL. Experience with Medallion Architecture preferred.'},
+      {id:2, title:'Power BI Developer', type:'Contract', location:'Remote (Global)', status:'Active', posted:'2026-04-20', description:'Looking for a Power BI expert to build executive dashboards for pharmaceutical analytics. DAX mastery and data modeling skills required.'},
+      {id:3, title:'Analytics Consultant', type:'Freelance', location:'Flexible', status:'Open', posted:'2026-04-22', description:'Short-term projects in data cleaning, migration, and dashboard creation. Open to collaboration on interesting data challenges.'}
+    ];
+    return JSON.parse(localStorage.getItem(this.STORAGE_KEY)) || defaultRoles;
+  },
+
+  saveRoles(roles) {
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(roles));
+  },
+
+  addRole(role) {
+    const roles = this.getRoles();
+    roles.unshift({...role, id: Date.now(), posted: new Date().toISOString().slice(0,10)});
+    this.saveRoles(roles);
+    return roles;
+  },
+
+  deleteRole(id) {
+    const roles = this.getRoles().filter(r => r.id !== id);
+    this.saveRoles(roles);
+    return roles;
+  },
+
+  updateRole(id, updates) {
+    const roles = this.getRoles().map(r => r.id === id ? {...r, ...updates} : r);
+    this.saveRoles(roles);
+    return roles;
+  }
+};
+
+// ═══════════════════════════════════════════════════════════════
+//  THEME SYSTEM
+// ═══════════════════════════════════════════════════════════════
+const T = {
+  dark: {
+    bg:'#04080f', bg2:'#060d1a', bg3:'#0a1424', card:'#0c1828', card2:'#101e32',
+    gold:'#c9a84c', gold2:'rgba(201,168,76,0.08)', goldB:'rgba(201,168,76,0.25)', goldGlow:'rgba(201,168,76,0.15)',
+    text:'#e8dfc8', muted:'#7a8ba8', subtle:'#1a2a40',
+    border:'rgba(201,168,76,0.08)', border2:'rgba(201,168,76,0.25)', border3:'rgba(201,168,76,0.4)',
+    accent:'#c9a84c', accent2:'#a8873a', accent3:'rgba(201,168,76,0.06)',
+    success:'#22c55e', danger:'#e24b4a', info:'#3b82f6'
+  },
+  light: {
+    bg:'#f0ece4', bg2:'#e8e0d4', bg3:'#ddd5c8', card:'#ffffff', card2:'#f5f0e8',
+    gold:'#8b6914', gold2:'rgba(139,105,20,0.06)', goldB:'rgba(139,105,20,0.2)', goldGlow:'rgba(139,105,20,0.1)',
+    text:'#1a1208', muted:'#5a4a2a', subtle:'#c8b89a',
+    border:'rgba(139,105,20,0.1)', border2:'rgba(139,105,20,0.25)', border3:'rgba(139,105,20,0.4)',
+    accent:'#8b6914', accent2:'#6b4f0e', accent3:'rgba(139,105,20,0.04)',
+    success:'#16a34a', danger:'#dc2626', info:'#2563eb'
+  }
+};
+
+// ═══════════════════════════════════════════════════════════════
+//  PROJECT DATA — Enhanced with detailed case studies
+// ═══════════════════════════════════════════════════════════════
+const PROJECTS = [
+  {
+    id:0, title:'Pharmaceutical ETL Pipeline', eyebrow:'Azure · Databricks · Power BI · Medallion Architecture',
+    category:'Enterprise Data Engineering',
+    impacts:['35% Revenue Boost','$10M Pipeline Value','3 Global Regions','50+ Products'],
+    timeline:'8 Months · 2024-2025',
+    team:'5 Data Engineers · 2 Analysts · 1 Product Owner',
+    overview:'Architected and deployed a production-grade ETL pipeline for Bayer Pharmaceutical division, processing 50+ product datasets across EMEA, APAC, and US regions. Implemented Medallion Architecture (Bronze→Silver→Gold) with automated quality gates at each layer.',
+    architecture:[
+      {layer:'Bronze (Raw)',desc:'GitHub API ingestion, raw JSON/CSV landing, schema enforcement, data lineage tracking'},
+      {layer:'Silver (Cleaned)',desc:'Delta Lake transformations, deduplication, type casting, business rule validation'},
+      {layer:'Gold (Curated)',desc:'Aggregated KPIs, star schema models, Power BI-optimized datasets, incremental loads'}
+    ],
+    metrics:[
+      {label:'Data Volume Processed',value:'2.4 TB/month',icon:'📦'},
+      {label:'Pipeline Uptime',value:'99.7%',icon:'⚡'},
+      {label:'Processing Time',value:'< 45 min',icon:'⏱️'},
+      {label:'Cost Reduction',value:'28%',icon:'💰'}
+    ],
+    tools:['Azure Data Factory','Azure Databricks','Delta Lake','SQL Server','Power BI','Medallion Architecture','GitHub Actions','Azure DevOps'],
+    challenges:[
+      {q:'Data inconsistency across 3 region datasets with different schemas',a:'Enforced schema-on-read validation at Bronze layer + automated schema evolution handling in Databricks — reduced downstream errors by 40% and eliminated manual schema mapping.'},
+      {q:'Slow refresh times (4+ hours) impacting real-time decisions',a:'Implemented incremental refresh with watermark columns + Power Query folding optimization — improved ETL efficiency by 20% and cut refresh to under 45 minutes.'},
+      {q:'Stakeholder misalignment between technical and business teams',a:'Built shared KPI dictionary with 47 metrics + self-service Power BI layer with row-level security — cut ad-hoc reporting requests by 55%.'}
+    ],
+    testimonials:[
+      {name:'Dr. Klaus Weber',role:'Director, Pharma Analytics',text:'This pipeline transformed how we view our global product performance. What used to take days now updates in real-time.'}
+    ],
+    gallery:['pipeline-arch',' medallion-flow','powerbi-dashboard']
+  },
+  {
+    id:1, title:'Crop Science Performance Dashboard', eyebrow:'Power BI · DAX · Power Automate · SharePoint',
+    category:'Business Intelligence',
+    impacts:['27% Revenue Increase','60% Effort Saved','50+ Products Monitored','3 Regions'],
+    timeline:'6 Months · 2024',
+    team:'3 BI Developers · 2 Business Analysts',
+    overview:'Built enterprise-grade KPI scorecards and executive dashboards for Bayer Crop Science, monitoring brand performance across EMEA, APAC & US markets. DAX-powered dynamic filtering with automated reporting via Power Automate, cutting manual reporting effort by 60%.',
+    architecture:[
+      {layer:'Data Sources',desc:'SQL Server, SharePoint Lists, ServiceNow API, Excel uploads'},
+      {layer:'Transformation',desc:'Power Query M-language, custom functions, parameter-driven queries'},
+      {layer:'Modeling',desc:'Star schema with 12 fact tables, 8 dimension tables, 200+ DAX measures'},
+      {layer:'Visualization',desc:'Drill-through reports, bookmarks, custom tooltips, mobile-optimized layouts'}
+    ],
+    metrics:[
+      {label:'DAX Measures',value:'200+',icon:'🧮'},
+      {label:'Report Pages',value:'24',icon:'📄'},
+      {label:'Monthly Users',value:'350+',icon:'👥'},
+      {label:'Auto-Reports Sent',value:'1,200+/mo',icon:'📧'}
+    ],
+    tools:['Power BI Desktop','DAX','Power Query','Power Automate','SharePoint Online','ServiceNow','Azure SQL','Row-Level Security'],
+    challenges:[
+      {q:'Complex DAX measures causing 8+ second report load times',a:'Refactored using variables, optimized measure dependencies, and implemented query reduction — response time cut by 45% to under 4 seconds.'},
+      {q:'Monthly reporting consuming 2+ days per cycle across 3 teams',a:'Built end-to-end Power Automate flows with SharePoint triggers + conditional email routing — cycle reduced to under 2 hours with zero manual intervention.'},
+      {q:'No standardized UAT process causing production defects',a:'Integrated ServiceNow for test case management with Azure DevOps sync — achieved zero post-production defects across 3 major releases.'}
+    ],
+    testimonials:[
+      {name:'Sarah Mitchell',role:'VP, Crop Science Operations',text:'The automated reporting alone saved us 120+ man-hours per month. The drill-through capabilities changed how leadership consumes data.'}
+    ],
+    gallery:['dashboard-overview','kpi-scorecard','automate-flow']
+  },
+  {
+    id:2, title:'Pharma Campaign Analytics Platform', eyebrow:'SQL · ADF · ServiceNow · PowerApps · Power BI',
+    category:'Marketing Analytics',
+    impacts:['9% ROI Improvement','Patient Engagement ↑ 34%','5 Data Sources Unified','Automated QA'],
+    timeline:'5 Months · 2023-2024',
+    team:'4 Engineers · 2 Marketing Analysts · 1 QA Lead',
+    overview:'Leveraged SQL & Azure Data Factory for data-driven pharmaceutical marketing targeting. Managed ServiceNow for test case tracking and DevOps integration. Automated workflows via MS PowerApps and SharePoint for end-to-end campaign tracking and reporting.',
+    architecture:[
+      {layer:'Ingestion',desc:'5 campaign sources (CRM, web, email, events, social) via Azure ADF pipelines'},
+      {layer:'Processing',desc:'SQL-based patient segmentation, cohort analysis, attribution modeling'},
+      {layer:'Orchestration',desc:'PowerApps frontend for campaign managers, SharePoint for document control'},
+      {layer:'Analytics',desc:'Power BI with RLS for marketing, compliance, and executive views'}
+    ],
+    metrics:[
+      {label:'Campaigns Tracked',value:'47',icon:'🎯'},
+      {label:'Patient Records',value:'2.1M',icon:'👤'},
+      {label:'Data Sources',value:'5',icon:'🔗'},
+      {label:'QA Time Saved',value:'15 hrs/week',icon:'⏳'}
+    ],
+    tools:['SQL Server','Azure Data Factory','ServiceNow','PowerApps','SharePoint','Power BI','Azure DevOps','Git'],
+    challenges:[
+      {q:'Fragmented data from 5 campaign sources with no common keys',a:'Built master patient index with fuzzy matching + custom ADF mapping logic — achieved single-source-of-truth reporting with 99.2% match accuracy.'},
+      {q:'Targeting inefficiency in pharma marketing (low engagement rates)',a:'Applied SQL-based RFM segmentation on patient datasets + behavioral scoring — improved campaign ROI by 9% and engagement by 34%.'},
+      {q:'Manual test case documentation consuming 3+ hours per QA analyst weekly',a:'Configured ServiceNow ↔ Azure DevOps bidirectional sync with automated test case generation — saved 15 hours/week across the QA team.'}
+    ],
+    testimonials:[
+      {name:'Rajesh Patel',role:'Head of Digital Marketing',text:'The patient segmentation model identified high-value cohorts we were completely missing. A game-changer for our targeting strategy.'}
+    ],
+    gallery:['campaign-flow','segmentation-model','powerapps-ui']
+  },
+  {
+    id:3, title:'Self-Learning Progress Tracker', eyebrow:'Power BI · Personal Project · Data Modeling',
+    category:'Personal / Learning',
+    impacts:['14 Topics Mastered','6 Courses Completed','3 Certifications Planned','87% Progress'],
+    timeline:'Ongoing · 2024-Present',
+    team:'Solo Project',
+    overview:'Personal Power BI dashboard tracking self-study progress across data engineering topics. Star-schema model with Courses, Topics & Progress tables. Includes skill gap matrix, streak counters, weekly goal meters, and certification roadmap with automated reminders.',
+    architecture:[
+      {layer:'Courses Table',desc:'Course metadata, platform, instructor, difficulty, estimated hours'},
+      {layer:'Topics Table',desc:'Skill taxonomy, prerequisites, job market demand from LinkedIn data'},
+      {layer:'Progress Table',desc:'Daily logs, completion %, notes, project links, time spent'},
+      {layer:'Certifications',desc:'Exam dates, prep progress, mock scores, resource links'}
+    ],
+    metrics:[
+      {label:'Study Hours',value:'340+',icon:'📚'},
+      {label:'Current Streak',value:'12 days',icon:'🔥'},
+      {label:'Topics Completed',value:'14/18',icon:'✅'},
+      {label:'Next Exam',value:'DP-203',icon:'📝'}
+    ],
+    tools:['Power BI','DAX','Excel','Data Modeling','Power Query','LinkedIn API','Notion Integration'],
+    challenges:[
+      {q:'No structured way to measure learning velocity and retention',a:'Designed star-schema model enabling slice-and-dice analysis of learning velocity by topic, time-of-day, and retention rate.'},
+      {q:'Motivation dips during self-study without accountability',a:'Added gamification layer — streak counters, weekly goal meters, completion badges, and social sharing integration.'},
+      {q:'Difficulty connecting learning to real job market requirements',a:'Created Skills Gap Matrix comparing current proficiency vs job market requirements scraped from LinkedIn — identifies high-ROI learning targets.'}
+    ],
+    testimonials:[],
+    gallery:['tracker-overview','skills-matrix','cert-roadmap']
+  }
+];
+
+const FREELANCE = [
+  {icon:'🧹', title:'Data Cleaning & Preparation', desc:'Transform raw, messy data into analysis-ready datasets. Handle duplicates, nulls, inconsistencies, and standardize formats across Excel, SQL, and cloud sources.', price:'From $500'},
+  {icon:'🔄', title:'Data Migration & Integration', desc:'Seamless migration across databases and cloud platforms. Azure, SQL Server, SharePoint, Snowflake — zero-downtime strategies with rollback plans.', price:'From $2,000'},
+  {icon:'📊', title:'Executive Dashboard Creation', desc:'Interactive Power BI dashboards with KPIs, scorecards, drill-through, and real-time refresh. Tailored for C-suite and operational teams.', price:'From $1,500'},
+  {icon:'📝', title:'ATS-Optimized Resume Building', desc:'Data-driven resumes with keyword optimization, achievement quantification, and recruiter-tested formatting for analytics & tech roles.', price:'From $200'},
+  {icon:'🔗', title:'ETL Pipeline Architecture', desc:'End-to-end automated pipelines using Azure ADF, Databricks, and Power Automate. From source extraction to insight delivery.', price:'From $3,000'},
+  {icon:'📈', title:'Business Analysis & Strategy', desc:'Translate business needs into data solutions. Requirements gathering, KPI definition, stakeholder alignment, and reporting strategy.', price:'From $1,000'}
+];
+
+const SKILLS = [
+  {e:'📊',n:'Power BI',l:95,cat:'Visualization'},{e:'🗄️',n:'SQL / T-SQL',l:92,cat:'Database'},
+  {e:'☁️',n:'Azure ADF',l:88,cat:'Cloud'},{e:'🔷',n:'Databricks',l:82,cat:'Cloud'},
+  {e:'⚡',n:'Power Automate',l:87,cat:'Automation'},{e:'🧮',n:'DAX / M',l:93,cat:'Analytics'},
+  {e:'📋',n:'SharePoint',l:80,cat:'Collaboration'},{e:'🔁',n:'ServiceNow',l:76,cat:'ITSM'},
+  {e:'🧪',n:'UAT / QA',l:85,cat:'Testing'},{e:'🏗️',n:'Medallion Arch',l:84,cat:'Architecture'},
+  {e:'🔬',n:'Data Modeling',l:90,cat:'Design'},{e:'🎯',n:'Stakeholder Mgmt',l:88,cat:'Soft Skills'},
+  {e:'🐍',n:'Python (Basic)',l:65,cat:'Programming'},{e:'📐',n:'Data Governance',l:78,cat:'Governance'},
+  {e:'🔐',n:'Row-Level Security',l:86,cat:'Security'}
+];
+
+const EXPERIENCE = [
+  {company:'Bayer Crop Science', role:'Jr. Data Engineer & Analyst', period:'2022 — Present', location:'Bangalore, India', type:'Full-time',
+   highlights:['Built ETL pipelines processing 2.4TB/month across 3 global regions','Developed 24 Power BI reports serving 350+ monthly active users','Implemented Medallion Architecture reducing data errors by 40%','Automated reporting saving 120+ man-hours/month via Power Automate','Achieved zero post-production defects across 3 major releases']},
+  {company:'Freelance & Consulting', role:'Data Consultant', period:'2021 — 2022', location:'Remote', type:'Contract',
+   highlights:['Delivered 15+ Power BI dashboards for SMB clients','Migrated 8 legacy Excel workflows to automated SQL + Power BI pipelines','Built custom ETL solutions for e-commerce and healthcare clients']},
+  {company:'Academic Projects', role:'Data Science Researcher', period:'2020 — 2021', location:'University', type:'Research',
+   highlights:['Published research on pharmaceutical data segmentation','Built predictive models for patient engagement using Python & SQL','Presented findings at 2 national conferences']}
+];
+
+// ═══════════════════════════════════════════════════════════════
+//  CINEMATIC HOOKS
+// ═══════════════════════════════════════════════════════════════
+
+function useParticles(isDark) {
+  useEffect(() => {
+    const c = document.getElementById('bg');
+    if(!c) return;
+    const ctx = c.getContext('2d');
+    let raf;
+    const resize = () => { c.width = innerWidth; c.height = innerHeight; };
+    resize();
+    window.addEventListener('resize', resize);
+    const pts = Array.from({length:90}, () => ({
+      x: Math.random()*innerWidth, y: Math.random()*innerHeight,
+      vx: (Math.random()-.5)*.2, vy: (Math.random()-.5)*.2,
+      r: Math.random()*1.5+.3, pulse: Math.random()*Math.PI*2
+    }));
+    const tick = () => {
+      ctx.clearRect(0,0,c.width,c.height);
+      const col = isDark ? '201,168,76' : '100,80,20';
+      pts.forEach(p => {
+        p.x+=p.vx; p.y+=p.vy; p.pulse+=0.02;
+        if(p.x<0||p.x>c.width) p.vx*=-1;
+        if(p.y<0||p.y>c.height) p.vy*=-1;
+        const pulseR = p.r + Math.sin(p.pulse)*0.3;
+        ctx.beginPath(); ctx.arc(p.x,p.y,Math.max(0.1,pulseR),0,Math.PI*2);
+        ctx.fillStyle=`rgba(${col},${.4+Math.sin(p.pulse)*.2})`; ctx.fill();
+      });
+      pts.forEach((a,i) => pts.slice(i+1).forEach(b => {
+        const d = Math.hypot(a.x-b.x,a.y-b.y);
+        if(d<140) { ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+          ctx.strokeStyle=`rgba(${col},${(1-d/140)*.1})`; ctx.lineWidth=.4; ctx.stroke(); }
+      }));
+      raf = requestAnimationFrame(tick);
+    };
+    tick();
+    return () => { cancelAnimationFrame(raf); window.removeEventListener('resize',resize); };
+  }, [isDark]);
+}
+
+function useGrain() {
+  useEffect(() => {
+    const canvas = document.getElementById('grainCanvas');
+    if(!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const w = canvas.width = 256;
+    const h = canvas.height = 256;
+    const idata = ctx.createImageData(w,h);
+    const buffer = new Uint32Array(idata.data.buffer);
+    let raf;
+    const noise = () => {
+      for(let i=0;i<buffer.length;i++) buffer[i] = ((Math.random()*255)|0) << 24;
+      ctx.putImageData(idata,0,0);
+      raf = requestAnimationFrame(noise);
+    };
+    noise();
+    return () => cancelAnimationFrame(raf);
+  }, []);
+}
+
+function useSpotlight() {
+  useEffect(() => {
+    const spot = document.getElementById('spotlight');
+    if(!spot) return;
+    const move = (e) => {
+      spot.style.setProperty('--sx', e.clientX+'px');
+      spot.style.setProperty('--sy', e.clientY+'px');
+      spot.style.opacity = '1';
+    };
+    const leave = () => { spot.style.opacity = '0'; };
+    document.addEventListener('mousemove', move);
+    document.addEventListener('mouseleave', leave);
+    return () => { document.removeEventListener('mousemove',move); document.removeEventListener('mouseleave',leave); };
+  }, []);
+}
+
+function useCursor() {
+  useEffect(() => {
+    if(/Mobi|Android/i.test(navigator.userAgent)) { document.body.classList.add('mobile'); return; }
+    const cur = document.getElementById('cur'), ring = document.getElementById('cur-r');
+    if(!cur || !ring) return;
+    let mx=0,my=0,rx=0,ry=0;
+    const move = e => { mx=e.clientX; my=e.clientY; cur.style.left=mx+'px'; cur.style.top=my+'px'; };
+    const loop = () => { rx+=(mx-rx)*.15; ry+=(my-ry)*.15; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(loop); };
+    const over = () => ring.classList.add('hover');
+    const out = () => ring.classList.remove('hover');
+    document.addEventListener('mousemove',move);
+    document.querySelectorAll('a,button,[role="button"],.tilt-card').forEach(el=>{el.addEventListener('mouseenter',over);el.addEventListener('mouseleave',out);});
+    loop();
+    return () => { document.removeEventListener('mousemove',move); };
+  }, []);
+}
+
+function useReveal() {
+  useEffect(() => {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, {threshold:.06, rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+}
+
+function useTilt(ref) {
+  useEffect(() => {
+    const el = ref.current;
+    if(!el) return;
+    const handleMove = (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - .5;
+      const y = (e.clientY - rect.top) / rect.height - .5;
+      el.style.transform = `perspective(1000px) rotateY(${x*12}deg) rotateX(${-y*12}deg) scale3d(1.02,1.02,1.02)`;
+    };
+    const handleLeave = () => { el.style.transform = 'perspective(1000px) rotateY(0) rotateX(0) scale3d(1,1,1)'; };
+    el.addEventListener('mousemove', handleMove);
+    el.addEventListener('mouseleave', handleLeave);
+    return () => { el.removeEventListener('mousemove',handleMove); el.removeEventListener('mouseleave',handleLeave); };
+  }, [ref]);
+}
+
+function usePreloader() {
+  const [done, setDone] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const pl = document.getElementById('preloader');
+      if(pl) pl.classList.add('done');
+      setTimeout(() => setDone(true), 1000);
+    }, 2800);
+    return () => clearTimeout(timer);
+  }, []);
+  return done;
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  ANIMATED COMPONENTS
+// ═══════════════════════════════════════════════════════════════
+
+function Counter({target, suffix='', duration=2200}) {
+  const [val, setVal] = useState(0);
+  const ref = useRef();
+  useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => {
+      if(e.isIntersecting) {
+        let start=0; const step=target/(duration/16);
+        const timer = setInterval(()=>{ start+=step; if(start>=target){setVal(target);clearInterval(timer);}else setVal(Math.floor(start)); },16);
+        obs.disconnect();
+      }
+    },{threshold:.4});
+    if(ref.current) obs.observe(ref.current);
+    return ()=>obs.disconnect();
+  },[target,duration]);
+  return <span ref={ref}>{val}{suffix}</span>;
+}
+
+function TypewriterText({text, speed=50, delay=0}) {
+  const [display, setDisplay] = useState('');
+  const [done, setDone] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      let i=0;
+      const interval = setInterval(()=>{
+        if(i<text.length){setDisplay(text.slice(0,i+1));i++;}
+        else{clearInterval(interval);setDone(true);}
+      },speed);
+      return ()=>clearInterval(interval);
+    },delay);
+    return ()=>clearTimeout(timer);
+  },[text,speed,delay]);
+  return <span>{display}{!done&&<span style={{borderRight:'2px solid #c9a84c',animation:'blink .75s step-end infinite'}}>&nbsp;</span>}</span>;
+}
+
+function SkillBar({level, color, delay=0}) {
+  const ref = useRef();
+  const [w, setW] = useState(0);
+  useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => {
+      if(e.isIntersecting) { setTimeout(()=>setW(level),delay); obs.disconnect(); }
+    },{threshold:.3});
+    if(ref.current) obs.observe(ref.current);
+    return ()=>obs.disconnect();
+  },[level,delay]);
+  return <div ref={ref} style={{height:'100%', width:w+'%', background:color, borderRadius:3, transition:'width 1.5s cubic-bezier(.23,1,.32,1)', position:'relative', overflow:'hidden'}}>
+    <div style={{position:'absolute',inset:0,background:'linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent)',animation:'shimmer 2s infinite'}}></div>
+  </div>;
+}
+
+function MagneticButton({children, style, onClick, className=''}) {
+  const ref = useRef();
+  const handleMove = (e) => {
+    const rect = ref.current.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width/2;
+    const y = e.clientY - rect.top - rect.height/2;
+    ref.current.style.transform = `translate(${x*.2}px,${y*.2}px)`;
+  };
+  const handleLeave = () => { ref.current.style.transform = 'translate(0,0)'; };
+  return <button ref={ref} className={`magnetic-btn ${className}`} style={style} onClick={onClick} onMouseMove={handleMove} onMouseLeave={handleLeave}>{children}</button>;
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  PROJECT VISUALS — Cinematic infographics
+// ═══════════════════════════════════════════════════════════════
+
+function ProjVisual({id, c, dark}) {
+  if(id===0) return (
+    <svg width="100%" height="100%" viewBox="0 0 400 200">
+      <defs>
+        <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stopColor={c.gold} stopOpacity=".3"/><stop offset="100%" stopColor={c.gold} stopOpacity="0"/></linearGradient>
+        <marker id="ma" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke={c.gold} strokeWidth="1.5"/></marker>
+        <filter id="glow"><feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      {/* Pipeline flow */}
+      {[{x:20,y:60,w:75,h:55,lbl:'GitHub',sub:'Source',col:c.gold},{x:115,y:60,w:80,h:55,lbl:'ADF',sub:'Extract',col:c.gold},{x:215,y:60,w:85,h:55,lbl:'Databricks',sub:'Transform',col:c.gold,highlight:true},{x:320,y:60,w:60,h:55,lbl:'Power BI',sub:'Insights',col:c.gold}].map((b,i)=>[
+        <rect key={`r${i}`} x={b.x} y={b.y} width={b.w} height={b.h} rx="8" fill={b.highlight?`${c.gold}15`:c.card} stroke={b.highlight?c.gold:c.border2} strokeWidth={b.highlight?"1.5":"1"} opacity={b.highlight?1:.8}/>,
+        <text key={`t1${i}`} x={b.x+b.w/2} y={b.y+24} textAnchor="middle" fill={b.highlight?c.gold:c.gold} fontSize="10" fontFamily="Inter,sans-serif" fontWeight={b.highlight?"600":"400"}>{b.lbl}</text>,
+        <text key={`t2${i}`} x={b.x+b.w/2} y={b.y+40} textAnchor="middle" fill={c.muted} fontSize="8" fontFamily="Inter,sans-serif">{b.sub}</text>
+      ])}
+      {/* Animated arrows */}
+      {[[95,87,113,87],[195,87,213,87],[300,87,318,87]].map(([x1,y1,x2,y2],i)=>[
+        <line key={`l${i}`} x1={x1} y1={y1} x2={x2} y2={y2} stroke={c.gold} strokeWidth="1.2" strokeDasharray="4 3" markerEnd="url(#ma)" opacity=".7">
+          <animate attributeName="stroke-dashoffset" from="50" to="0" dur="1.6s" begin={`${i*.25}s`} repeatCount="indefinite"/>
+        </line>,
+        <circle key={`c${i}`} r="3" fill={c.gold} filter="url(#glow)">
+          <animateMotion dur="1.6s" begin={`${i*.25}s`} repeatCount="indefinite" path={`M${x1},${y1} L${x2},${y2}`}/>
+        </circle>
+      ])}
+      {/* Metrics */}
+      <rect x="20" y="135" width="360" height="50" rx="8" fill={c.bg2} stroke={c.border} strokeWidth="1"/>
+      {[{v:'2.4TB',l:'Monthly Data'},{v:'99.7%',l:'Uptime'},{v:'45min',l:'Refresh'},{v:'-28%',l:'Cost'}].map((m,i)=>[
+        <text key={`mv${i}`} x={60+i*90} y="160" textAnchor="middle" fill={c.gold} fontSize="12" fontFamily="Cinzel,serif" fontWeight="700">{m.v}</text>,
+        <text key={`ml${i}`} x={60+i*90} y="175" textAnchor="middle" fill={c.muted} fontSize="7" fontFamily="Inter,sans-serif">{m.l}</text>
+      ])}
+    </svg>
+  );
+  if(id===1) return (
+    <div style={{width:'100%',padding:'14px 18px'}}>
+      <div style={{fontSize:'9px',color:c.muted,fontFamily:'Inter,sans-serif',letterSpacing:'2px',textTransform:'uppercase',marginBottom:'10px'}}>Brand Performance · Quarterly</div>
+      <div style={{display:'flex',gap:'4px',alignItems:'flex-end',height:'75px',marginBottom:'12px'}}>
+        {[45,68,38,58,82,42,65,75,55,88,48,72].map((h,i)=>{
+          const isPeak = h>80;
+          return <div key={i} style={{flex:1,height:h+'%',borderRadius:'2px 2px 0 0',background:isPeak?`linear-gradient(180deg,${c.gold},${c.accent2})`:c.subtle,opacity:isPeak?1:.5,transition:'all .3s',position:'relative'}}>
+            {isPeak&&<div style={{position:'absolute',top:'-8px',left:'50%',transform:'translateX(-50%)',width:'4px',height:'4px',borderRadius:'50%',background:c.gold,boxShadow:`0 0 8px ${c.gold}`}}/>}
+          </div>;
+        })}
+      </div>
+      <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:'8px'}}>
+        {[{v:'+27%',l:'Revenue',color:c.gold},{v:'350+',l:'Users',color:c.gold},{v:'1.2K',l:'Reports/mo',color:c.gold}].map(k=>[
+          <div key={k.l} style={{background:c.bg,borderRadius:'6px',padding:'10px',textAlign:'center',border:`1px solid ${c.border}`}}>
+            <div style={{fontFamily:'Cinzel,serif',fontSize:'16px',fontWeight:'700',color:k.color}}>{k.v}</div>
+            <div style={{fontSize:'8px',color:c.muted,marginTop:'3px',letterSpacing:'1px'}}>{k.l}</div>
+          </div>
+        ])}
+      </div>
+    </div>
+  );
+  if(id===2) return (
+    <svg width="100%" height="100%" viewBox="0 0 380 190">
+      <defs>
+        <marker id="mc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke={c.gold} strokeWidth="1.5"/></marker>
+        <filter id="glow2"><feGaussianBlur stdDeviation="4" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      {/* Sources */}
+      {[{x:15,y:35,w:65,h:40,lbl:'CRM',sub:'Patient'},{x:95,y:35,w:65,h:40,lbl:'Web',sub:'Behavior'},{x:175,y:35,w:65,h:40,lbl:'Email',sub:'Campaign'},{x:255,y:35,w:65,h:40,lbl:'Social',sub:'Engagement'},{x:335,y:35,w:40,h:40,lbl:'Events',sub:'Offline'}].map((b,i)=>[
+        <rect key={`s${i}`} x={b.x} y={b.y} width={b.w} height={b.h} rx="6" fill={c.card} stroke={c.border2} strokeWidth="1" opacity=".8"/>,
+        <text key={`st${i}`} x={b.x+b.w/2} y={b.y+18} textAnchor="middle" fill={c.gold} fontSize="9" fontFamily="Inter,sans-serif">{b.lbl}</text>,
+        <text key={`ss${i}`} x={b.x+b.w/2} y={b.y+32} textAnchor="middle" fill={c.muted} fontSize="7" fontFamily="Inter,sans-serif">{b.sub}</text>
+      ])}
+      {/* Flow lines */}
+      {[[80,55,93,95],[160,55,108,95],[240,55,123,95],[320,55,138,95],[355,55,153,95]].map(([x1,y1,x2,y2],i)=>[
+        <path key={`p${i}`} d={`M${x1},${y1} C${x1},${y1+30} ${x2},${y2-30} ${x2},${y2}`} fill="none" stroke={c.gold} strokeWidth="1" strokeDasharray="3 3" opacity=".5" markerEnd="url(#mc)">
+          <animate attributeName="stroke-dashoffset" from="30" to="0" dur="2s" begin={`${i*.2}s`} repeatCount="indefinite"/>
+        </path>
+      ])}
+      {/* ADF Box */}
+      <rect x="80" y="95" width="220" height="45" rx="8" fill={`${c.gold}10`} stroke={c.gold} strokeWidth="1.5"/>
+      <text x="190" y="115" textAnchor="middle" fill={c.gold} fontSize="11" fontFamily="Cinzel,serif" fontWeight="600">Azure Data Factory</text>
+      <text x="190" y="130" textAnchor="middle" fill={c.muted} fontSize="8" fontFamily="Inter,sans-serif">Unification · Segmentation · Attribution</text>
+      {/* Output */}
+      <rect x="80" y="155" width="100" height="30" rx="6" fill={c.card} stroke={c.border2}/>
+      <text x="130" y="174" textAnchor="middle" fill={c.gold} fontSize="9" fontFamily="Inter,sans-serif">Power BI</text>
+      <rect x="200" y="155" width="100" height="30" rx="6" fill={c.card} stroke={c.border2}/>
+      <text x="250" y="174" textAnchor="middle" fill={c.gold} fontSize="9" fontFamily="Inter,sans-serif">PowerApps</text>
+      {/* ROI Badge */}
+      <circle cx="340" cy="170" r="22" fill="none" stroke={c.gold} strokeWidth="1" filter="url(#glow2)"/>
+      <text x="340" y="166" textAnchor="middle" fill={c.gold} fontSize="10" fontFamily="Cinzel,serif" fontWeight="700">+9%</text>
+      <text x="340" y="178" textAnchor="middle" fill={c.muted} fontSize="7" fontFamily="Inter,sans-serif">ROI</text>
+    </svg>
+  );
+  return (
+    <div style={{width:'100%',padding:'14px 16px'}}>
+      <div style={{fontSize:'9px',color:c.muted,fontFamily:'Inter,sans-serif',letterSpacing:'2px',textTransform:'uppercase',marginBottom:'10px'}}>Self-Learning Tracker · 2024-Present</div>
+      <div style={{display:'flex',gap:'10px',marginBottom:'10px'}}>
+        <div style={{flex:2,background:c.bg2,borderRadius:'8px',padding:'12px',border:`1px solid ${c.border}`}}>
+          <svg width="100%" height="55" viewBox="0 0 100 55">
+            <defs><linearGradient id="areaG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor={c.gold} stopOpacity=".3"/><stop offset="100%" stopColor={c.gold} stopOpacity="0"/></linearGradient></defs>
+            <polyline points="0,50 12,42 25,35 37,38 50,28 62,22 75,15 87,18 100,10" fill="none" stroke={c.gold} strokeWidth="1.5"/>
+            <polyline points="0,50 12,42 25,35 37,38 50,28 62,22 75,15 87,18 100,10 100,55 0,55" fill="url(#areaG)"/>
+            <circle cx="100" cy="10" r="3" fill={c.gold}><animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite"/></circle>
+          </svg>
+        </div>
+        <div style={{flex:1,background:c.bg2,borderRadius:'8px',padding:'10px',textAlign:'center',border:`1px solid ${c.border}`,display:'flex',flexDirection:'column',justifyContent:'center'}}>
+          <div style={{fontFamily:'Cinzel,serif',fontSize:'28px',fontWeight:'900',color:c.gold}}>87%</div>
+          <div style={{fontSize:'8px',color:c.muted,letterSpacing:'1px'}}>Overall Progress</div>
+        </div>
+      </div>
+      <div style={{display:'flex',gap:'6px'}}>
+        {[{v:'340+',l:'Study Hrs'},{v:'12',l:'Day Streak'},{v:'DP-203',l:'Next Exam'}].map(k=>[
+          <div key={k.l} style={{flex:1,background:c.bg,borderRadius:'6px',padding:'8px',textAlign:'center',border:`1px solid ${c.border}`}}>
+            <div style={{fontFamily:'Cinzel,serif',fontSize:'14px',fontWeight:'700',color:c.gold}}>{k.v}</div>
+            <div style={{fontSize:'7px',color:c.muted,marginTop:'2px',letterSpacing:'1px'}}>{k.l}</div>
+          </div>
+        ])}
+      </div>
+    </div>
+  );
+}
+
+
+// ═══════════════════════════════════════════════════════════════
+//  MAIN APP
+// ═══════════════════════════════════════════════════════════════
+function App() {
+  const [dark, setDark] = useState(true);
+  const [proj, setProj] = useState(null);
+  const [dash, setDash] = useState(false);
+  const [dashPw, setDashPw] = useState('');
+  const [dashOtp, setDashOtp] = useState('');
+  const [dashStep, setDashStep] = useState('password'); // password | otp | unlocked
+  const [visitorCount, setVisitorCount] = useState(0);
+  const [showWelcome, setShowWelcome] = useState(false);
+  const [visitorName, setVisitorName] = useState('');
+  const [nameInput, setNameInput] = useState('');
+  const [pwErr, setPwErr] = useState(false);
+  const [otpErr, setOtpErr] = useState(false);
+  const [otpSent, setOtpSent] = useState(false);
+  const [roles, setRoles] = useState(() => RolesSystem.getRoles());
+  const [showRoleForm, setShowRoleForm] = useState(false);
+  const [editingRole, setEditingRole] = useState(null);
+  const [activeRoleFilter, setActiveRoleFilter] = useState('All');
+  const [showAbout, setShowAbout] = useState(false);
+  const preloaderDone = usePreloader();
+
+  const OWNER_PW = 'shabbir2024';
+
+  const c = dark ? T.dark : T.light;
+
+  // Visitor welcome logic
+  useEffect(() => {
+    if (!VisitorSystem.hasBeenWelcomed()) {
+      const timer = setTimeout(() => setShowWelcome(true), 3500);
+      return () => clearTimeout(timer);
+    } else {
+      const name = VisitorSystem.getVisitorName();
+      if (name) setVisitorName(name);
+      const count = VisitorSystem.getCount();
+      setVisitorCount(count);
+    }
+  }, []);
+
+  const handleNameSubmit = () => {
+    if (!nameInput.trim()) return;
+    const result = VisitorSystem.logVisitor(nameInput.trim());
+    setVisitorName(nameInput.trim());
+    setVisitorCount(result.total);
+    VisitorSystem.markWelcomed();
+    setShowWelcome(false);
+  };
+
+  const handlePasswordCheck = () => {
+    if (dashPw === OWNER_PW) {
+      const otp = OTPSystem.generate();
+      setOtpSent(true);
+      setDashStep('otp');
+      // In production, this OTP would be sent via email/SMS
+      console.log('Generated OTP:', otp);
+      alert(`OTP Generated: ${otp}\n\nIn production, this would be sent to your email/SMS.\nFor testing, check the browser console (F12).`);
+    } else {
+      setPwErr(true);
+      setTimeout(() => setPwErr(false), 2000);
+    }
+  };
+
+  const handleOtpVerify = () => {
+    if (OTPSystem.verify(dashOtp)) {
+      setDashStep('unlocked');
+      OTPSystem.clear();
+    } else {
+      setOtpErr(true);
+      setTimeout(() => setOtpErr(false), 2000);
+    }
+  };
+
+  const handleAddRole = (roleData) => {
+    const updated = RolesSystem.addRole(roleData);
+    setRoles(updated);
+    setShowRoleForm(false);
+  };
+
+  const handleDeleteRole = (id) => {
+    if(confirm('Delete this role?')) {
+      const updated = RolesSystem.deleteRole(id);
+      setRoles(updated);
+    }
+  };
+
+  const handleUpdateRole = (id, updates) => {
+    const updated = RolesSystem.updateRole(id, updates);
+    setRoles(updated);
+    setEditingRole(null);
+  };
+
+  useParticles(dark);
+  useGrain();
+  useSpotlight();
+  useCursor();
+  useReveal();
+
+  useEffect(() => { document.body.className = dark ? '' : 'light'; }, [dark]);
+
+  const css = {
+    page: { minHeight:'100vh', position:'relative', zIndex:2, color:c.text, fontFamily:"'Inter',system-ui,sans-serif" },
+    nav: { position:'fixed', top:0, left:0, right:0, zIndex:500, display:'flex', justifyContent:'space-between', alignItems:'center',
+      padding:'16px 50px', backdropFilter:'blur(24px) saturate(180%)', borderBottom:`1px solid ${c.border}`,
+      background: dark ? 'rgba(4,8,15,0.92)' : 'rgba(240,236,228,0.95)', transition:'all .4s' },
+    logo: { fontFamily:"'Cinzel',serif", fontSize:24, fontWeight:700, color:c.gold, letterSpacing:'2px', cursor:'none' },
+    navBtn: (active) => ({ background: active ? c.accent3 : 'none', border:`1px solid ${active?c.border2:c.border}`, borderRadius:8,
+      padding:'8px 18px', color: active ? c.gold : c.muted, fontSize:11, cursor:'none', fontFamily:"'Inter',sans-serif",
+      letterSpacing:'1.5px', textTransform:'uppercase', transition:'all .25s', fontWeight:500 }),
+    gold: { color: c.gold },
+    muted: { color: c.muted },
+    card: { background: c.card, border:`1px solid ${c.border}`, borderRadius:16, transition:'all .4s cubic-bezier(.23,1,.32,1)' },
+    tag: { padding:'5px 14px', background:c.accent3, border:`1px solid ${c.border2}`, borderRadius:6,
+      fontSize:10, color:c.gold, letterSpacing:'1.5px', textTransform:'uppercase', fontFamily:"'Inter',sans-serif", fontWeight:500 },
+    pill: { padding:'6px 16px', background:c.gold2, border:`1px solid ${c.goldB}`, borderRadius:8, fontSize:11, color:c.gold, fontWeight:500 },
+    secLabel: { fontSize:11, letterSpacing:'4px', color:c.gold, textTransform:'uppercase', marginBottom:14, display:'block', fontWeight:500 },
+    secTitle: { fontFamily:"'Cinzel',serif", fontSize:48, fontWeight:700, color:c.text, lineHeight:1.1, marginBottom:16 },
+    btn: { padding:'16px 40px', background:c.gold, color: dark?'#04080f':'#fff',
+      fontFamily:"'Cinzel',serif", fontWeight:600, fontSize:13,
+      border:'none', borderRadius:6, cursor:'none', transition:'all .3s', letterSpacing:'2px', textTransform:'uppercase' },
+    btnGhost: { padding:'16px 40px', background:'transparent', color:c.gold,
+      border:`1px solid ${c.border2}`, fontFamily:"'Cinzel',serif", fontWeight:600,
+      fontSize:13, borderRadius:6, cursor:'none', transition:'all .3s', letterSpacing:'2px', textTransform:'uppercase' },
+    input: { width:'100%', padding:'14px 18px', background:c.bg2, border:`1px solid ${c.border}`,
+      borderRadius:10, color:c.text, fontFamily:"'Inter',sans-serif", fontSize:13, outline:'none', transition:'all .3s' },
+  };
+
+  const roleFilters = ['All', 'Full-time', 'Contract', 'Freelance'];
+  const filteredRoles = activeRoleFilter === 'All' ? roles : roles.filter(r => r.type === activeRoleFilter);
+
+  return (
+    <div style={css.page}>
+      <canvas id="bg" style={{position:'fixed',top:0,left:0,pointerEvents:'none',zIndex:0,opacity:.3}}></canvas>
+
+      {/* Ambient Mesh Background */}
+      <div className="ambient-mesh">
+        <div className="ambient-blob" style={{width:'600px',height:'600px',background:'radial-gradient(circle,rgba(201,168,76,.15),transparent)',top:'-200px',left:'-100px',animationDuration:'25s'}}></div>
+        <div className="ambient-blob" style={{width:'500px',height:'500px',background:'radial-gradient(circle,rgba(139,105,20,.1),transparent)',bottom:'-150px',right:'-100px',animationDuration:'30s',animationDelay:'-5s'}}></div>
+        <div className="ambient-blob" style={{width:'400px',height:'400px',background:'radial-gradient(circle,rgba(201,168,76,.08),transparent)',top:'40%',left:'60%',animationDuration:'20s',animationDelay:'-10s'}}></div>
+      </div>
+
+      {/* WELCOME MODAL */}
+      {showWelcome && (
+        <div style={{position:'fixed',inset:0,zIndex:100001,background:'rgba(4,8,15,0.95)',backdropFilter:'blur(20px)',display:'flex',alignItems:'center',justifyContent:'center',animation:'fadeIn .5s ease'}}>
+          <div style={{background:c.card,border:`1px solid ${c.border2}`,borderRadius:24,maxWidth:480,width:'90%',padding:'50px 40px',textAlign:'center',animation:'scaleIn .6s ease .2s both'}}>
+            <div style={{fontSize:'48px',marginBottom:'20px'}}>👋</div>
+            <div style={{fontFamily:"'Cinzel',serif",fontSize:28,fontWeight:700,color:c.gold,marginBottom:'12px'}}>Welcome Visitor</div>
+            <div style={{fontSize:14,color:c.muted,lineHeight:1.8,marginBottom:'28px',fontStyle:'italic'}}>
+              Before you explore, I'd love to know who's visiting. Your name helps me personalize this experience.
+            </div>
+            <input 
+              value={nameInput} 
+              onChange={e=>setNameInput(e.target.value)} 
+              onKeyDown={e=>e.key==='Enter'&&handleNameSubmit()}
+              placeholder="Enter your name..." 
+              style={{...css.input,marginBottom:'16px',textAlign:'center',fontSize:15}}
+              autoFocus
+            />
+            <MagneticButton style={{...css.btn,width:'100%'}} onClick={handleNameSubmit}>
+              Enter Portfolio →
+            </MagneticButton>
+            <button onClick={()=>{VisitorSystem.markWelcomed();setShowWelcome(false);}} style={{marginTop:'12px',background:'none',border:'none',color:c.muted,fontSize:12,cursor:'none',textDecoration:'underline'}}>
+              Skip for now
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* PERSONALIZED WELCOME BANNER */}
+      {visitorName && !showWelcome && (
+        <div style={{position:'fixed',top:'80px',right:'20px',zIndex:400,background:c.card,border:`1px solid ${c.border2}`,borderRadius:12,padding:'12px 20px',boxShadow:`0 8px 32px ${c.goldGlow}`,animation:'slideRight .6s ease',maxWidth:'280px'}}>
+          <div style={{fontSize:11,color:c.gold,letterSpacing:'1px',marginBottom:'4px'}}>Welcome back,</div>
+          <div style={{fontFamily:"'Cinzel',serif",fontSize:16,fontWeight:600,color:c.text}}>{visitorName}</div>
+          <div style={{fontSize:10,color:c.muted,marginTop:'4px'}}>Feel free to explore my work</div>
+        </div>
+      )}
+
+      {/* NAV */}
+      <nav style={css.nav}>
+        <div style={css.logo}>SH.</div>
+        <div style={{display:'flex', gap:10, alignItems:'center', flexWrap:'wrap'}}>
+          {['Projects','Experience','Skills','Roles','Freelance','Contact'].map(s => (
+            <button key={s} style={css.navBtn(false)}
+              onClick={()=>document.getElementById(s.toLowerCase())?.scrollIntoView({behavior:'smooth'})}>
+              {s}
+            </button>
+          ))}
+          <button style={css.navBtn(false)} onClick={()=>setDark(d=>!d)}>
+            {dark ? '☀ Light' : '☾ Dark'}
+          </button>
+          <button style={{...css.navBtn(false), borderColor:c.goldB, color:c.gold}} onClick={()=>setDash(true)}>
+            📊 Analytics
+          </button>
+        </div>
+      </nav>
+
+      {/* ════ HERO ════ */}
+      <section style={{minHeight:'100vh', display:'flex', alignItems:'center', justifyContent:'center',
+        padding:'120px 50px 80px', position:'relative'}}>
+        <div style={{maxWidth:1200, width:'100%', display:'grid', gridTemplateColumns:'1fr 1fr', gap:80, alignItems:'center'}}>
+
+          {/* Left: Text */}
+          <div>
+            <div style={{...css.secLabel, marginBottom:20, animation:'slideLeft .8s ease .5s both'}}>▹ Data Engineer & Analyst · Bayer Crop Science</div>
+            <h1 style={{fontFamily:"'Cinzel',serif", fontSize:72, fontWeight:700,
+              lineHeight:1.05, color:c.text, marginBottom:16, animation:'fadeUp .8s ease .7s both'}}>
+              Shabbir<br/>
+              <span style={{color:c.gold}}>Hussain K</span>
+            </h1>
+            <div style={{fontSize:16, color:c.muted, lineHeight:1.8, margin:'28px 0 36px', maxWidth:520, animation:'fadeUp .8s ease .9s both'}}>
+              <TypewriterText text="Transforming complex pharmaceutical & crop science data into strategic decisions that drive revenue." speed={30} delay={1200}/>
+            </div>
+            <div style={{display:'flex', gap:16, flexWrap:'wrap', marginBottom:32, animation:'fadeUp .8s ease 1.1s both'}}>
+              <MagneticButton style={css.btn} onClick={()=>document.getElementById('projects')?.scrollIntoView({behavior:'smooth'})}>
+                View My Work
+              </MagneticButton>
+              <MagneticButton style={css.btnGhost} onClick={()=>document.getElementById('contact')?.scrollIntoView({behavior:'smooth'})}>
+                Get In Touch
+              </MagneticButton>
+            </div>
+            {/* LinkedIn CTA */}
+            <a href="https://www.linkedin.com/in/shabbir-hussainkurumulakota-72751625b" target="_blank" rel="noopener"
+              style={{display:'inline-flex', alignItems:'center', gap:12, padding:'14px 28px',
+                background: dark?'rgba(0,119,181,0.08)':'rgba(0,119,181,0.06)',
+                border:'1px solid rgba(0,119,181,0.25)', borderRadius:12, textDecoration:'none',
+                color:c.text, fontSize:13, cursor:'none', transition:'all .3s', animation:'fadeUp .8s ease 1.3s both'}}
+              onMouseEnter={e=>{e.currentTarget.style.borderColor='rgba(0,119,181,0.5)';e.currentTarget.style.transform='translateX(4px)'}}
+              onMouseLeave={e=>{e.currentTarget.style.borderColor='rgba(0,119,181,0.25)';e.currentTarget.style.transform='none'}}>
+              <span style={{background:'#0077B5', color:'#fff', fontWeight:800, fontSize:12, padding:'5px 10px', borderRadius:4, fontFamily:"'Inter',sans-serif"}}>in</span>
+              <span style={{fontWeight:500}}>Connect on LinkedIn</span>
+              <span style={{color:c.gold}}>→</span>
+            </a>
+          </div>
+
+          {/* Right: Profile Photo */}
+          <div style={{display:'flex', justifyContent:'center', animation:'fadeUp 1s ease .6s both'}}>
+            <div style={{position:'relative', display:'inline-block'}}>
+              {/* Animated rings */}
+              <div style={{position:'absolute', inset:-20, borderRadius:'50%',
+                border:`1px solid ${c.goldB}`, animation:'spinSlow 15s linear infinite'}}>
+                <div style={{position:'absolute',top:'-4px',left:'50%',transform:'translateX(-50%)',width:'8px',height:'8px',borderRadius:'50%',background:c.gold,boxShadow:`0 0 12px ${c.gold}`}}></div>
+              </div>
+              <div style={{position:'absolute', inset:-40, borderRadius:'50%',
+                border:`1px dashed ${c.border}`, animation:'spinSlowRev 25s linear infinite'}}></div>
+              <div style={{position:'absolute', inset:-60, borderRadius:'50%',
+                border:`1px solid ${c.border}`, opacity:.3, animation:'spinSlow 35s linear infinite'}}></div>
+              {/* Photo */}
+              <div style={{width:320, height:320, borderRadius:'50%',
+                background:`linear-gradient(135deg,${c.gold},${c.accent2})`, padding:3,
+                boxShadow:`0 0 80px ${c.goldGlow}`, position:'relative'}}>
+                <div style={{width:'100%', height:'100%', borderRadius:'50%', overflow:'hidden', position:'relative',
+                  background:c.card}}>
+                  <img src="shabbir-hero.png" alt="Shabbir Hussain K"
+                    style={{width:'100%',height:'100%',objectFit:'cover',borderRadius:'50%'}}
+                    onError={e=>{e.target.style.display='none';e.target.parentElement.innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100%;flex-direction:column"><span style="font-family:Cinzel,serif;font-size:64px;font-weight:900;color:'+c.gold+'">SH</span><span style="font-size:11px;color:'+c.muted+';letter-spacing:2px;margin-top:4px">DATA · ENGINEER</span></div>';}}
+                  />
+                </div>
+              </div>
+              {/* Status */}
+              <div style={{position:'absolute', bottom:20, right:20, width:24, height:24,
+                borderRadius:'50%', background:'#22c55e', border:`4px solid ${c.bg}`,
+                boxShadow:'0 0 16px #22c55e', animation:'pulseGlow 2s ease infinite'}}>
+                <div style={{position:'absolute',inset:'-4px',borderRadius:'50%',border:'2px solid rgba(34,197,94,.3)',animation:'pulseGlow 2s ease infinite .5s'}}></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div style={{position:'absolute',bottom:40,left:'50%',transform:'translateX(-50%)',display:'flex',flexDirection:'column',alignItems:'center',gap:8,animation:'fadeUp 1s ease 2s both'}}>
+          <span style={{fontSize:10,color:c.muted,letterSpacing:'3px',textTransform:'uppercase'}}>Scroll</span>
+          <div style={{width:1,height:40,background:`linear-gradient(180deg,${c.gold},transparent)`,position:'relative'}}>
+            <div style={{position:'absolute',top:0,left:'-2px',width:5,height:5,borderRadius:'50%',background:c.gold,animation:'float 2s ease infinite'}}></div>
+          </div>
+        </div>
+      </section>
+
+      {/* MARQUEE STRIP */}
+      <div style={{background:c.card2,borderTop:`1px solid ${c.border}`,borderBottom:`1px solid ${c.border}`,padding:'16px 0',overflow:'hidden'}}>
+        <div className="marquee-container">
+          <div className="marquee-content" style={{display:'flex',gap:60,alignItems:'center'}}>
+            {['Power BI','Azure ADF','Databricks','SQL Server','DAX','Delta Lake','Medallion Architecture','Power Automate','SharePoint','ServiceNow','Data Modeling','ETL Pipelines'].map((tech,i)=>[
+              <span key={`a${i}`} style={{fontFamily:"'Cinzel',serif",fontSize:13,color:c.gold,letterSpacing:'3px',textTransform:'uppercase',whiteSpace:'nowrap',opacity:.7}}>{tech}</span>,
+              <span key={`d${i}`} style={{color:c.border2,fontSize:20}}>◆</span>
+            ])}
+            {['Power BI','Azure ADF','Databricks','SQL Server','DAX','Delta Lake','Medallion Architecture','Power Automate','SharePoint','ServiceNow','Data Modeling','ETL Pipelines'].map((tech,i)=>[
+              <span key={`b${i}`} style={{fontFamily:"'Cinzel',serif",fontSize:13,color:c.gold,letterSpacing:'3px',textTransform:'uppercase',whiteSpace:'nowrap',opacity:.7}}>{tech}</span>,
+              <span key={`e${i}`} style={{color:c.border2,fontSize:20}}>◆</span>
+            ])}
+          </div>
+        </div>
+      </div>
+
+      {/* ════ STATS STRIP ════ */}
+      <div className="rv" style={{background:c.card, borderTop:`1px solid ${c.border}`, borderBottom:`1px solid ${c.border}`, padding:'50px 50px'}}>
+        <div style={{display:'grid', gridTemplateColumns:'repeat(4,1fr)', maxWidth:1100, margin:'0 auto', gap:0}}>
+          {[
+            {n:3,s:'+',l:'Years Experience'},
+            {n:27,s:'%',l:'Revenue Impact'},
+            {n:10,s:'M+',l:'Pipeline Value'},
+            {n:60,s:'%',l:'Effort Automated'}
+          ].map((st,i)=>[
+            <div key={i} style={{textAlign:'center', padding:'0 30px', borderRight:i<3?`1px solid ${c.border}`:'none'}}>
+              <div style={{fontFamily:"'Cinzel',serif", fontSize:48, fontWeight:700, color:c.gold, lineHeight:1}}>
+                <Counter target={st.n} suffix={st.s}/>
+              </div>
+              <div style={{fontSize:10, color:c.muted, letterSpacing:'2px', textTransform:'uppercase', marginTop:8, fontWeight:500}}>{st.l}</div>
+            </div>
+          ])}
+        </div>
+      </div>
+
+      {/* ════ ABOUT / SPEAKING SECTION ════ */}
+      <section style={{padding:'100px 50px', maxWidth:1200, margin:'0 auto'}}>
+        <div className="rv" style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:60, alignItems:'center'}}>
+          <div>
+            <span style={css.secLabel}>▹ About Me</span>
+            <h2 style={{...css.secTitle, fontSize:36}}>Speaking & Leadership</h2>
+            <div style={{width:48, height:3, background:c.gold, marginBottom:32}}></div>
+            <p style={{fontSize:15, color:c.muted, lineHeight:2, marginBottom:24, fontStyle:'italic'}}>
+              Beyond the code, I believe in sharing knowledge and building communities. From presenting at Bayer internal conferences to mentoring junior analysts, I'm committed to elevating the data profession.
+            </p>
+            <div style={{display:'flex', flexDirection:'column', gap:16}}>
+              {[
+                {icon:'🎤', title:'Internal Tech Talks', desc:'Presented ETL best practices to 200+ Bayer engineers'},
+                {icon:'📚', title:'Mentorship', desc:'Guided 5 junior analysts from Excel to Power BI mastery'},
+                {icon:'🏆', title:'Certifications', desc:'Azure Fundamentals (AZ-900) · Credly Verified · 2024'}
+              ].map((item,i)=>[
+                <div key={i} style={{display:'flex', gap:16, alignItems:'flex-start', padding:'16px 20px', background:c.bg2, borderRadius:12, border:`1px solid ${c.border}`}}>
+                  <div style={{fontSize:24}}>{item.icon}</div>
+                  <div>
+                    <div style={{fontSize:14, fontWeight:600, color:c.text, marginBottom:4}}>{item.title}</div>
+                    <div style={{fontSize:12, color:c.muted, lineHeight:1.7}}>{item.desc}</div>
+                  </div>
+                </div>
+              ])}
+            </div>
+          </div>
+          <div style={{position:'relative'}}>
+            <div style={{borderRadius:20, overflow:'hidden', border:`1px solid ${c.border2}`, position:'relative'}}>
+              <img src="shabbir-speaking.png" alt="Shabbir presenting" style={{width:'100%', height:'auto', display:'block', filter: dark?'brightness(.9) contrast(1.1)':'none'}}
+                onError={e=>{e.target.style.display='none';e.target.parentElement.innerHTML='<div style="padding:80px 40px;text-align:center;background:'+c.bg2+'"><div style="font-family:Cinzel,serif;font-size:24px;color:'+c.gold+'">Presenting at Bayer</div><div style="font-size:13px;color:'+c.muted+';margin-top:8px">Internal Tech Conference · 2024</div></div>';}}
+              />
+              <div style={{position:'absolute',bottom:0,left:0,right:0,padding:'40px 24px 24px',background:`linear-gradient(transparent,${c.bg})`}}>
+                <div style={{fontFamily:"'Cinzel',serif",fontSize:18,fontWeight:600,color:c.gold}}>Bayer Internal Tech Summit</div>
+                <div style={{fontSize:12,color:c.muted,marginTop:4}}>Presenting Medallion Architecture Implementation · 2024</div>
+              </div>
+            </div>
+            {/* Decorative elements */}
+            <div style={{position:'absolute',top:-20,right:-20,width:100,height:100,border:`1px solid ${c.border2}`,borderRadius:12,zIndex:-1}}></div>
+            <div style={{position:'absolute',bottom:-20,left:-20,width:80,height:80,background:c.gold2,borderRadius:12,zIndex:-1}}></div>
+          </div>
+        </div>
+      </section>
+
+      {/* ════ PROJECTS ════ */}
+      <section id="projects" style={{padding:'100px 50px', maxWidth:1300, margin:'0 auto'}}>
+        <div className="rv">
+          <span style={css.secLabel}>▹ Selected Work</span>
+          <h2 style={css.secTitle}>Featured Projects</h2>
+          <div style={{width:48, height:3, background:c.gold, marginBottom:16}}></div>
+          <p style={{fontSize:15, color:c.muted, fontStyle:'italic', lineHeight:1.9, maxWidth:600, marginBottom:50}}>
+            Enterprise-grade data solutions built for Bayer and beyond. Click any project to explore the full case study with architecture diagrams, metrics, and impact analysis.
+          </p>
+        </div>
+        <div style={{display:'grid', gridTemplateColumns:'repeat(2,1fr)', gap:28}}>
+          {PROJECTS.map((p,i) => {
+            const cardRef = useRef();
+            useTilt(cardRef);
+            return (
+              <div key={p.id} ref={cardRef} className="rv tilt-card" style={{...css.card, overflow:'hidden', cursor:'none',
+                transitionDelay:`${i*0.1}s`}}
+                onClick={()=>setProj(p)}
+                onMouseEnter={e=>{e.currentTarget.style.borderColor=c.border2;e.currentTarget.style.boxShadow=`0 20px 60px ${c.goldGlow}`}}
+                onMouseLeave={e=>{e.currentTarget.style.borderColor=c.border;e.currentTarget.style.boxShadow='none'}}>
+                <div style={{height:220, background:c.bg2, display:'flex', alignItems:'center', justifyContent:'center',
+                  overflow:'hidden', borderBottom:`1px solid ${c.border}`, position:'relative'}}>
+                  <ProjVisual id={p.id} c={c} dark={dark}/>
+                  <div style={{position:'absolute',top:16,left:16,display:'flex',gap:8}}>
+                    <span style={css.pill}>{p.category}</span>
+                  </div>
+                </div>
+                <div style={{padding:30}}>
+                  <div style={{display:'flex', gap:8, flexWrap:'wrap', marginBottom:16}}>
+                    {p.impacts.slice(0,3).map(imp=><span key={imp} style={css.pill}>{imp}</span>)}
+                  </div>
+                  <div style={{fontFamily:"'Cinzel',serif", fontSize:22, fontWeight:600, color:c.text, marginBottom:10}}>{p.title}</div>
+                  <div style={{fontSize:13, color:c.muted, lineHeight:1.9, marginBottom:20}}>{p.overview.slice(0,160)}…</div>
+                  <div style={{display:'flex', flexWrap:'wrap', gap:8, marginBottom:18}}>
+                    {p.tools.slice(0,4).map(t=><span key={t} style={css.tag}>{t}</span>)}
+                  </div>
+                  <div style={{color:c.gold, fontSize:12, display:'flex', alignItems:'center', gap:8, fontWeight:500, letterSpacing:'1px'}}>
+                    View Full Case Study <span style={{transition:'transform .3s'}}>→</span>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ════ EXPERIENCE TIMELINE ════ */}
+      <div style={{background:c.bg2, borderTop:`1px solid ${c.border}`, borderBottom:`1px solid ${c.border}`}}>
+        <section id="experience" style={{padding:'100px 50px', maxWidth:1000, margin:'0 auto'}}>
+          <div className="rv">
+            <span style={css.secLabel}>▹ Career Path</span>
+            <h2 style={css.secTitle}>Experience</h2>
+            <div style={{width:48, height:3, background:c.gold, marginBottom:50}}></div>
+          </div>
+          <div style={{position:'relative', paddingLeft:50}}>
+            <div className="timeline-line" style={{left:20}}></div>
+            {EXPERIENCE.map((exp,i)=>[
+              <div key={i} className="rv" style={{position:'relative', marginBottom:i<EXPERIENCE.length-1?48:0, paddingLeft:30}}>
+                <div className="timeline-dot" style={{left:14,top:4}}></div>
+                <div style={{background:c.card, border:`1px solid ${c.border}`, borderRadius:16, padding:28, transition:'all .3s'}}
+                  onMouseEnter={e=>{e.currentTarget.style.borderColor=c.border2;e.currentTarget.style.transform='translateX(8px)'}}
+                  onMouseLeave={e=>{e.currentTarget.style.borderColor=c.border;e.currentTarget.style.transform='none'}}>
+                  <div style={{display:'flex', justifyContent:'space-between', alignItems:'flex-start', marginBottom:12, flexWrap:'wrap', gap:8}}>
+                    <div>
+                      <div style={{fontFamily:"'Cinzel',serif", fontSize:18, fontWeight:600, color:c.text}}>{exp.role}</div>
+                      <div style={{fontSize:13, color:c.gold, marginTop:4, fontWeight:500}}>{exp.company}</div>
+                    </div>
+                    <div style={{textAlign:'right'}}>
+                      <div style={{fontSize:12, color:c.muted, fontFamily:"'JetBrains Mono',monospace"}}>{exp.period}</div>
+                      <div style={{fontSize:11, color:c.muted, marginTop:2}}>{exp.location}</div>
+                    </div>
+                  </div>
+                  <div style={{display:'flex', flexDirection:'column', gap:10, marginTop:16}}>
+                    {exp.highlights.map((h,j)=>[
+                      <div key={j} style={{display:'flex', gap:10, alignItems:'flex-start'}}>
+                        <span style={{color:c.gold, fontSize:12, marginTop:2}}>▸</span>
+                        <span style={{fontSize:13, color:c.muted, lineHeight:1.7}}>{h}</span>
+                      </div>
+                    ])}
+                  </div>
+                </div>
+              </div>
+            ])}
+          </div>
+        </section>
+      </div>
+
+      {/* ════ SKILLS ════ */}
+      <section id="skills" style={{padding:'100px 50px', maxWidth:1200, margin:'0 auto'}}>
+        <div className="rv">
+          <span style={css.secLabel}>▹ Technical Arsenal</span>
+          <h2 style={css.secTitle}>Skills & Tools</h2>
+          <div style={{width:48, height:3, background:c.gold, marginBottom:50}}></div>
+        </div>
+        <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(150px,1fr))', gap:16, marginBottom:40}}>
+          {SKILLS.map((s,i)=>[
+            <div key={s.n} className="rv" style={{...css.card, padding:'24px 16px', textAlign:'center', transitionDelay:`${i*.03}s`}}
+              onMouseEnter={e=>{e.currentTarget.style.borderColor=c.border2;e.currentTarget.style.transform='translateY(-6px)';e.currentTarget.style.boxShadow=`0 12px 40px ${c.goldGlow}`}}
+              onMouseLeave={e=>{e.currentTarget.style.borderColor=c.border;e.currentTarget.style.transform='none';e.currentTarget.style.boxShadow='none'}}>
+              <div style={{fontSize:32, marginBottom:12}}>{s.e}</div>
+              <div style={{fontSize:13, color:c.text, fontWeight:600, marginBottom:6}}>{s.n}</div>
+              <div style={{fontSize:10, color:c.muted, letterSpacing:'1px', textTransform:'uppercase', marginBottom:12}}>{s.cat}</div>
+              <div style={{height:4, background:c.subtle, borderRadius:2, overflow:'hidden'}}>
+                <SkillBar level={s.l} color={c.gold} delay={i*50}/>
+              </div>
+              <div style={{fontSize:11, color:c.gold, marginTop:8, fontFamily:"'JetBrains Mono',monospace"}}>{s.l}%</div>
+            </div>
+          ])}
+        </div>
+        <div className="rv" style={{...css.card, padding:'28px 32px', display:'flex', alignItems:'center', gap:24,
+          borderColor:c.border2, background:`linear-gradient(135deg,${c.card},${c.bg2})`}}>
+          <div style={{width:56, height:56, background:c.gold2, borderRadius:12, display:'flex',
+            alignItems:'center', justifyContent:'center', fontSize:28, flexShrink:0, border:`1px solid ${c.goldB}`}}>🏆</div>
+          <div>
+            <div style={{fontFamily:"'Cinzel',serif", fontSize:18, fontWeight:600, color:c.gold}}>Microsoft Certified: Azure Fundamentals (AZ-900)</div>
+            <div style={{fontSize:12, color:c.muted, marginTop:4, letterSpacing:'1px'}}>Verified on Credly · Issued 2024 · Credential ID: 8C3F9A2E</div>
+          </div>
+          <div style={{marginLeft:'auto'}}>
+            <a href="https://www.credly.com" target="_blank" rel="noopener" style={{...css.btnGhost, padding:'10px 24px', fontSize:11, textDecoration:'none', display:'inline-block'}}>
+              Verify →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ════ OPEN ROLES ════ */}
+      <div style={{background:c.bg2, borderTop:`1px solid ${c.border}`, borderBottom:`1px solid ${c.border}`}}>
+        <section id="roles" style={{padding:'100px 50px', maxWidth:1200, margin:'0 auto'}}>
+          <div className="rv">
+            <span style={css.secLabel}>▹ Opportunities</span>
+            <h2 style={css.secTitle}>Open for Roles</h2>
+            <div style={{width:48, height:3, background:c.gold, marginBottom:16}}></div>
+            <p style={{fontSize:15, color:c.muted, fontStyle:'italic', lineHeight:1.9, maxWidth:600, marginBottom:40}}>
+              I'm actively exploring new opportunities. If any of these roles align with your needs, or if you have something custom in mind, let's talk.
+            </p>
+          </div>
+
+          {/* Filter tabs */}
+          <div className="rv" style={{display:'flex', gap:10, marginBottom:32, flexWrap:'wrap'}}>
+            {roleFilters.map(filter=>[
+              <button key={filter} onClick={()=>setActiveRoleFilter(filter)}
+                style={{...css.navBtn(activeRoleFilter===filter), padding:'10px 24px'}}>
+                {filter}
+              </button>
+            ])}
+          </div>
+
+          <div style={{display:'flex', flexDirection:'column', gap:20}}>
+            {filteredRoles.map((role,i)=>[
+              <div key={role.id} className="rv role-card" style={{transitionDelay:`${i*.08}s`}}>
+                <div style={{display:'flex', justifyContent:'space-between', alignItems:'flex-start', flexWrap:'wrap', gap:16}}>
+                  <div style={{flex:1}}>
+                    <div style={{display:'flex', gap:10, alignItems:'center', marginBottom:10, flexWrap:'wrap'}}>
+                      <span style={css.tag}>{role.type}</span>
+                      <span style={{...css.pill, fontSize:10}}>{role.status}</span>
+                      <span style={{fontSize:11, color:c.muted, fontFamily:"'JetBrains Mono',monospace"}}>Posted {role.posted}</span>
+                    </div>
+                    <div style={{fontFamily:"'Cinzel',serif", fontSize:20, fontWeight:600, color:c.text, marginBottom:8}}>{role.title}</div>
+                    <div style={{display:'flex', gap:16, marginBottom:12, flexWrap:'wrap'}}>
+                      <span style={{fontSize:12, color:c.muted, display:'flex', alignItems:'center', gap:6}}>📍 {role.location}</span>
+                    </div>
+                    <div style={{fontSize:13, color:c.muted, lineHeight:1.8}}>{role.description}</div>
+                  </div>
+                  <div style={{display:'flex', flexDirection:'column', gap:10, alignItems:'flex-end'}}>
+                    <a href={`mailto:shabbircampus@gmail.com?subject=Role%20Inquiry:%20${encodeURIComponent(role.title)}`}
+                      style={{...css.btn, padding:'12px 28px', fontSize:11, textDecoration:'none', display:'inline-block', whiteSpace:'nowrap'}}>
+                      Apply Now →
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ])}
+          </div>
+
+          {/* Custom inquiry CTA */}
+          <div className="rv" style={{marginTop:40, textAlign:'center', padding:'40px', background:c.card, borderRadius:16, border:`1px solid ${c.border}`}}>
+            <div style={{fontFamily:"'Cinzel',serif", fontSize:20, fontWeight:600, color:c.gold, marginBottom:8}}>Don't see a fit?</div>
+            <div style={{fontSize:14, color:c.muted, marginBottom:20}}>I'm open to custom roles, collaborations, and advisory positions.</div>
+            <MagneticButton style={css.btnGhost} onClick={()=>document.getElementById('contact')?.scrollIntoView({behavior:'smooth'})}>
+              Propose a Role
+            </MagneticButton>
+          </div>
+        </section>
+      </div>
+
+      {/* ════ FREELANCE ════ */}
+      <section id="freelance" style={{padding:'100px 50px', maxWidth:1200, margin:'0 auto'}}>
+        <div className="rv">
+          <span style={css.secLabel}>▹ Services</span>
+          <h2 style={css.secTitle}>Freelance</h2>
+          <div style={{width:48, height:3, background:c.gold, marginBottom:16}}></div>
+          <p style={{fontSize:15, color:c.muted, fontStyle:'italic', lineHeight:1.9, maxWidth:600, marginBottom:50}}>
+            Available for select freelance projects. Fast turnaround, clear communication, and data-driven results guaranteed.
+          </p>
+        </div>
+        <div style={{display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:24, marginBottom:48}}>
+          {FREELANCE.map((f,i)=>[
+            <div key={i} className="rv" style={{...css.card, padding:32, transitionDelay:`${i*.06}s`}}
+              onMouseEnter={e=>{e.currentTarget.style.borderColor=c.border2;e.currentTarget.style.transform='translateY(-8px)';e.currentTarget.style.boxShadow=`0 20px 50px ${c.goldGlow}`}}
+              onMouseLeave={e=>{e.currentTarget.style.borderColor=c.border;e.currentTarget.style.transform='none';e.currentTarget.style.boxShadow='none'}}>
+              <div style={{fontSize:40, marginBottom:20}}>{f.icon}</div>
+              <div style={{fontFamily:"'Cinzel',serif", fontSize:17, fontWeight:600, color:c.text, marginBottom:10}}>{f.title}</div>
+              <div style={{fontSize:13, color:c.muted, lineHeight:1.9, marginBottom:16}}>{f.desc}</div>
+              <div style={{fontSize:12, color:c.gold, fontWeight:600, fontFamily:"'JetBrains Mono',monospace"}}>{f.price}</div>
+            </div>
+          ])}
+        </div>
+        <div className="rv" style={{background:c.gold2, border:`1px solid ${c.goldB}`, borderRadius:16, padding:'40px 48px',
+          display:'flex', alignItems:'center', justifyContent:'space-between', flexWrap:'wrap', gap:24}}>
+          <div>
+            <div style={{fontFamily:"'Cinzel',serif", fontSize:24, fontWeight:700, color:c.gold}}>Ready to work together?</div>
+            <div style={{fontSize:13, color:c.muted, marginTop:8, fontStyle:'italic'}}>I respond to all inquiries within 24 hours.</div>
+          </div>
+          <a href="mailto:shabbircampus@gmail.com?subject=Freelance%20Inquiry&body=Hi%20Shabbir,%0A%0AI'm%20interested%20in%20your%20services.%0A%0AProject:%20%0ABudget:%20%0ATimeline:%20"
+            style={{...css.btn, textDecoration:'none', display:'inline-block'}}>
+            Start a Project →
+          </a>
+        </div>
+      </section>
+
+      {/* ════ CONTACT ════ */}
+      <div style={{background:c.bg2, borderTop:`1px solid ${c.border}`}}>
+        <section id="contact" style={{padding:'100px 50px', maxWidth:1100, margin:'0 auto'}}>
+          <div className="rv">
+            <span style={css.secLabel}>▹ Connect</span>
+            <h2 style={css.secTitle}>Contact</h2>
+            <div style={{width:48, height:3, background:c.gold, marginBottom:50}}></div>
+          </div>
+          <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:60, alignItems:'start'}}>
+            <div className="rv">
+              <p style={{fontSize:15, color:c.muted, lineHeight:2, fontStyle:'italic', marginBottom:36}}>
+                The best way to reach me is through email. I'm open to data engineering & analytics roles, collaborations, and freelance projects worldwide.
+              </p>
+              {[
+                {icon:'✉️', label:'Email (Primary)', val:'shabbircampus@gmail.com', href:'mailto:shabbircampus@gmail.com'},
+                {icon:'📱', label:'Phone / WhatsApp', val:'+91 96116 24719', href:'tel:+919611624719'},
+                {icon:'💼', label:'LinkedIn', val:'linkedin.com/in/shabbir-hussain', href:'https://www.linkedin.com/in/shabbir-hussainkurumulakota-72751625b'},
+                {icon:'📍', label:'Location', val:'Bangalore, India · Open to Remote', href:null},
+              ].map((item,i)=>[
+                <a key={i} href={item.href || '#'} target={item.href?.startsWith('http')?'_blank':undefined} rel="noopener"
+                  style={{display:'flex', alignItems:'center', gap:18, padding:'20px 24px',
+                    background:c.card, border:`1px solid ${c.border}`, borderRadius:14, marginBottom:14,
+                    textDecoration:'none', color:c.text, transition:'all .25s', cursor:'none'}}
+                  onMouseEnter={e=>{e.currentTarget.style.borderColor=c.border2;e.currentTarget.style.transform='translateX(8px)'}}
+                  onMouseLeave={e=>{e.currentTarget.style.borderColor=c.border;e.currentTarget.style.transform='none'}}>
+                  <div style={{width:48, height:48, background:c.accent3, borderRadius:12,
+                    display:'flex', alignItems:'center', justifyContent:'center', fontSize:22, flexShrink:0}}>{item.icon}</div>
+                  <div>
+                    <div style={{fontSize:11, color:c.muted, marginBottom:3, letterSpacing:'1px', textTransform:'uppercase'}}>{item.label}</div>
+                    <div style={{fontSize:14, color:c.text, fontWeight:500}}>{item.val}</div>
+                  </div>
+                </a>
+              ])}
+            </div>
+            <div className="rv" style={{...css.card, padding:40}}>
+              <div style={{fontFamily:"'Cinzel',serif", fontSize:22, fontWeight:600, color:c.text, marginBottom:8}}>
+                Send a Message
+              </div>
+              <div style={{fontSize:13, color:c.muted, marginBottom:28, fontStyle:'italic'}}>I'll get back to you within 24 hours.</div>
+              <EmailForm c={c} css={css}/>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      {/* FOOTER */}
+      <footer style={{textAlign:'center', padding:'60px 50px', borderTop:`1px solid ${c.border}`, position:'relative', zIndex:2, background:c.bg}}>
+        <div style={{fontFamily:"'Cinzel',serif", fontSize:32, fontWeight:700, color:c.gold, marginBottom:12, letterSpacing:'4px'}}>SH.</div>
+        <div style={{fontSize:12, color:c.muted, letterSpacing:'1px', marginBottom:8}}>Shabbir Hussain K · Data Engineer & Analyst · Bangalore, India</div>
+        <div style={{fontSize:11, color:c.subtle, marginBottom:20}}>Built with precision · Designed for impact</div>
+        <div style={{display:'flex', justifyContent:'center', gap:24, marginBottom:20}}>
+          {['LinkedIn','GitHub','Credly','Email'].map((link,i)=>[
+            <a key={i} href={link==='LinkedIn'?'https://www.linkedin.com/in/shabbir-hussainkurumulakota-72751625b':link==='Email'?'mailto:shabbircampus@gmail.com':'#'} 
+              style={{fontSize:11, color:c.muted, textDecoration:'none', letterSpacing:'1px', textTransform:'uppercase', transition:'color .3s'}}
+              onMouseEnter={e=>e.target.style.color=c.gold}
+              onMouseLeave={e=>e.target.style.color=c.muted}>
+              {link}
+            </a>
+          ])}
+        </div>
+        <div style={{fontSize:11, color:c.subtle, display:'flex', alignItems:'center', justifyContent:'center', gap:8}}>
+          <span style={{width:6,height:6,borderRadius:'50%',background:'#22c55e',display:'inline-block'}}></span>
+          {visitorCount} visitors · Last updated April 2026
+        </div>
+      </footer>
+
+      {/* ════ PROJECT MODAL ════ */}
+      {proj && <ProjModal p={proj} c={c} css={css} dark={dark} onClose={()=>setProj(null)}/>}
+
+      {/* ════ ANALYTICS DASHBOARD ════ */}
+      {dash && <AnalyticsDash c={c} css={css} dark={dark}
+        step={dashStep} setStep={setDashStep}
+        pw={dashPw} setPw={setDashPw}
+        otp={dashOtp} setOtp={setDashOtp}
+        pwErr={pwErr} otpErr={otpErr} otpSent={otpSent}
+        onPasswordCheck={handlePasswordCheck}
+        onOtpVerify={handleOtpVerify}
+        onClose={()=>{setDash(false);setDashStep('password');setDashPw('');setDashOtp('');setPwErr(false);setOtpErr(false);setOtpSent(false);}}
+        count={visitorCount}/>}
+
+    </div>
+  );
+}
+
+
+// ═══════════════════════════════════════════════════════════════
+//  EMAIL FORM
+// ═══════════════════════════════════════════════════════════════
+function EmailForm({c, css}) {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [msg, setMsg] = useState('');
+  const [sent, setSent] = useState(false);
+
+  const send = () => {
+    if(!name || !msg) { alert('Please fill your name and message.'); return; }
+    const mailto = `mailto:shabbircampus@gmail.com?subject=${encodeURIComponent(subject||'Portfolio Inquiry')}&body=${encodeURIComponent(`From: ${name} (${email || 'No email provided'})\n\n${msg}`)}`;
+    window.open(mailto);
+    setSent(true);
+    setTimeout(()=>setSent(false),3000);
+  };
+
+  return (
+    <div>
+      <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:16, marginBottom:16}}>
+        <div>
+          <label style={{display:'block', fontSize:10, color:c.muted, letterSpacing:'2px', textTransform:'uppercase', marginBottom:8, fontWeight:500}}>Name *</label>
+          <input value={name} onChange={e=>setName(e.target.value)} placeholder="Your full name" style={css.input}/>
+        </div>
+        <div>
+          <label style={{display:'block', fontSize:10, color:c.muted, letterSpacing:'2px', textTransform:'uppercase', marginBottom:8, fontWeight:500}}>Email</label>
+          <input value={email} onChange={e=>setEmail(e.target.value)} placeholder="your@email.com" style={css.input}/>
+        </div>
+      </div>
+      <div style={{marginBottom:16}}>
+        <label style={{display:'block', fontSize:10, color:c.muted, letterSpacing:'2px', textTransform:'uppercase', marginBottom:8, fontWeight:500}}>Subject</label>
+        <input value={subject} onChange={e=>setSubject(e.target.value)} placeholder="What is this about?" style={css.input}/>
+      </div>
+      <div style={{marginBottom:20}}>
+        <label style={{display:'block', fontSize:10, color:c.muted, letterSpacing:'2px', textTransform:'uppercase', marginBottom:8, fontWeight:500}}>Message *</label>
+        <textarea value={msg} onChange={e=>setMsg(e.target.value)} placeholder="Tell me about your project, role, or question..." rows={5}
+          style={{...css.input, resize:'vertical', lineHeight:1.8}}/>
+      </div>
+      <MagneticButton style={{...css.btn, width:'100%', padding:18}} onClick={send}>
+        {sent ? '✓ Opening Email Client...' : 'Send Message →'}
+      </MagneticButton>
+      <div style={{marginTop:12, fontSize:11, color:c.muted, textAlign:'center', fontStyle:'italic'}}>
+        This opens your default email application
+      </div>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  PROJECT MODAL — Cinematic Detail View
+// ═══════════════════════════════════════════════════════════════
+function ProjModal({p, c, css, dark, onClose}) {
+  const [activeTab, setActiveTab] = useState('overview');
+  const tabs = ['overview','architecture','metrics','challenges'];
+
+  useEffect(()=>{ document.body.style.overflow='hidden'; return()=>{ document.body.style.overflow=''; }; },[]);
+
+  return (
+    <div style={{position:'fixed',inset:0,zIndex:800,background:'rgba(4,8,15,0.96)',
+      backdropFilter:'blur(24px)',overflowY:'auto',display:'flex',alignItems:'flex-start',
+      justifyContent:'center',padding:'40px 20px'}} onClick={e=>e.target===e.currentTarget&&onClose()}>
+      <div style={{background:c.card,border:`1px solid ${c.border2}`,borderRadius:24,maxWidth:900,
+        width:'100%',position:'relative',animation:'fadeUp .5s cubic-bezier(.23,1,.32,1)', overflow:'hidden'}}>
+
+        {/* Header with visual */}
+        <div style={{height:300,background:c.bg2,borderRadius:'24px 24px 0 0',
+          display:'flex',alignItems:'center',justifyContent:'center',overflow:'hidden',
+          borderBottom:`1px solid ${c.border}`, position:'relative'}}>
+          <div style={{width:'90%',height:'90%'}}><ProjVisual id={p.id} c={c} dark={dark}/></div>
+          <div style={{position:'absolute',bottom:0,left:0,right:0,padding:'60px 40px 30px',
+            background:`linear-gradient(transparent,${c.card})`}}>
+            <div style={{fontSize:11,color:c.gold,letterSpacing:'3px',textTransform:'uppercase',marginBottom:8,fontWeight:500}}>{p.eyebrow}</div>
+            <div style={{fontFamily:"'Cinzel',serif",fontSize:32,fontWeight:700,color:c.text}}>{p.title}</div>
+          </div>
+        </div>
+
+        <button onClick={onClose} style={{position:'absolute',top:24,right:24,background:c.card2,
+          border:`1px solid ${c.border}`,borderRadius:'50%',width:48,height:48,
+          display:'flex',alignItems:'center',justifyContent:'center',cursor:'none',
+          color:c.text,fontSize:20,transition:'all .2s',zIndex:10}}
+          onMouseEnter={e=>{e.currentTarget.style.borderColor=c.gold;e.currentTarget.style.color=c.gold;e.currentTarget.style.transform='rotate(90deg)'}}
+          onMouseLeave={e=>{e.currentTarget.style.borderColor=c.border;e.currentTarget.style.color=c.text;e.currentTarget.style.transform='none'}}>✕</button>
+
+        <div style={{padding:40}}>
+          {/* Impact pills */}
+          <div style={{display:'flex',gap:10,flexWrap:'wrap',marginBottom:28}}>
+            {p.impacts.map(imp=><span key={imp} style={css.pill}>{imp}</span>)}
+          </div>
+
+          {/* Meta info */}
+          <div style={{display:'flex',gap:24,marginBottom:28,flexWrap:'wrap',fontSize:12,color:c.muted}}>
+            <span>⏱️ {p.timeline}</span>
+            <span>👥 {p.team}</span>
+          </div>
+
+          {/* Tabs */}
+          <div style={{display:'flex',gap:4,marginBottom:28,borderBottom:`1px solid ${c.border}`,paddingBottom:4}}>
+            {tabs.map(tab=>[
+              <button key={tab} onClick={()=>setActiveTab(tab)}
+                style={{padding:'10px 20px',background:activeTab===tab?c.accent3:'none',border:'none',borderRadius:8,
+                  color:activeTab===tab?c.gold:c.muted,fontSize:12,fontFamily:"'Inter',sans-serif",fontWeight:500,
+                  textTransform:'uppercase',letterSpacing:'1px',cursor:'none',transition:'all .3s'}}>
+                {tab}
+              </button>
+            ])}
+          </div>
+
+          {/* Tab Content */}
+          {activeTab==='overview' && (
+            <div style={{animation:'fadeUp .4s ease'}}>
+              <div style={{fontSize:11,color:c.gold,letterSpacing:'2px',textTransform:'uppercase',marginBottom:12,fontWeight:500}}>Project Overview</div>
+              <div style={{fontSize:14,color:c.muted,lineHeight:2,fontStyle:'italic',marginBottom:28}}>{p.overview}</div>
+              <div style={{fontSize:11,color:c.gold,letterSpacing:'2px',textTransform:'uppercase',marginBottom:12,fontWeight:500}}>Technology Stack</div>
+              <div style={{display:'flex',flexWrap:'wrap',gap:8,marginBottom:28}}>
+                {p.tools.map(t=><span key={t} style={css.tag}>{t}</span>)}
+              </div>
+              {p.testimonials.length>0 && (
+                <div style={{background:c.bg2,border:`1px solid ${c.border}`,borderRadius:12,padding:24,marginTop:20}}>
+                  <div style={{fontSize:24,marginBottom:12}}>❝</div>
+                  <div style={{fontSize:14,color:c.text,lineHeight:1.8,fontStyle:'italic',marginBottom:16}}>{p.testimonials[0].text}</div>
+                  <div style={{display:'flex',alignItems:'center',gap:12}}>
+                    <div style={{width:40,height:40,borderRadius:'50%',background:c.gold2,display:'flex',alignItems:'center',justifyContent:'center',fontSize:16}}>👤</div>
+                    <div>
+                      <div style={{fontSize:13,fontWeight:600,color:c.text}}>{p.testimonials[0].name}</div>
+                      <div style={{fontSize:11,color:c.muted}}>{p.testimonials[0].role}</div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {activeTab==='architecture' && (
+            <div style={{animation:'fadeUp .4s ease'}}>
+              <div style={{fontSize:11,color:c.gold,letterSpacing:'2px',textTransform:'uppercase',marginBottom:20,fontWeight:500}}>System Architecture</div>
+              <div style={{display:'flex',flexDirection:'column',gap:16}}>
+                {p.architecture.map((layer,i)=>[
+                  <div key={i} style={{display:'flex',gap:20,alignItems:'flex-start',padding:24,background:c.bg2,borderRadius:12,border:`1px solid ${c.border}`}}>
+                    <div style={{width:48,height:48,borderRadius:12,background:c.gold2,display:'flex',alignItems:'center',justifyContent:'center',fontSize:20,flexShrink:0,border:`1px solid ${c.goldB}`}}>
+                      {['🥉','🥈','🥇','🏆'][i] || '📦'}
+                    </div>
+                    <div>
+                      <div style={{fontSize:14,fontWeight:600,color:c.gold,marginBottom:6}}>{layer.layer}</div>
+                      <div style={{fontSize:13,color:c.muted,lineHeight:1.8}}>{layer.desc}</div>
+                    </div>
+                  </div>
+                ])}
+              </div>
+            </div>
+          )}
+
+          {activeTab==='metrics' && (
+            <div style={{animation:'fadeUp .4s ease'}}>
+              <div style={{fontSize:11,color:c.gold,letterSpacing:'2px',textTransform:'uppercase',marginBottom:20,fontWeight:500}}>Key Metrics</div>
+              <div style={{display:'grid',gridTemplateColumns:'repeat(2,1fr)',gap:16}}>
+                {p.metrics.map((m,i)=>[
+                  <div key={i} style={{background:c.bg2,border:`1px solid ${c.border}`,borderRadius:12,padding:28,textAlign:'center',transition:'all .3s'}}
+                    onMouseEnter={e=>{e.currentTarget.style.borderColor=c.border2;e.currentTarget.style.transform='scale(1.02)'}}
+                    onMouseLeave={e=>{e.currentTarget.style.borderColor=c.border;e.currentTarget.style.transform='none'}}>
+                    <div style={{fontSize:32,marginBottom:12}}>{m.icon}</div>
+                    <div style={{fontFamily:"'Cinzel',serif",fontSize:28,fontWeight:700,color:c.gold,marginBottom:6}}>{m.value}</div>
+                    <div style={{fontSize:12,color:c.muted,letterSpacing:'1px'}}>{m.label}</div>
+                  </div>
+                ])}
+              </div>
+            </div>
+          )}
+
+          {activeTab==='challenges' && (
+            <div style={{animation:'fadeUp .4s ease'}}>
+              <div style={{fontSize:11,color:c.gold,letterSpacing:'2px',textTransform:'uppercase',marginBottom:20,fontWeight:500}}>Challenges & Solutions</div>
+              {p.challenges.map((ch,i)=>[
+                <div key={i} style={{background:c.bg2,border:`1px solid ${c.border}`,borderRadius:12,padding:'24px 28px',marginBottom:14,transition:'all .3s'}}
+                  onMouseEnter={e=>{e.currentTarget.style.borderColor=c.border2}}
+                  onMouseLeave={e=>{e.currentTarget.style.borderColor=c.border}}>
+                  <div style={{display:'flex',gap:12,alignItems:'flex-start',marginBottom:12}}>
+                    <span style={{color:c.danger,fontSize:16,flexShrink:0,marginTop:2}}>⚡</span>
+                    <div style={{fontSize:13,color:c.text,fontWeight:500,lineHeight:1.6}}>{ch.q}</div>
+                  </div>
+                  <div style={{display:'flex',gap:12,alignItems:'flex-start',paddingLeft:28}}>
+                    <span style={{color:c.success,fontSize:16,flexShrink:0,marginTop:2}}>✓</span>
+                    <div style={{fontSize:13,color:c.muted,lineHeight:1.8}}>{ch.a}</div>
+                  </div>
+                </div>
+              ])}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  ANALYTICS DASHBOARD — OTP Secured
+// ═══════════════════════════════════════════════════════════════
+function AnalyticsDash({c, css, dark, step, setStep, pw, setPw, otp, setOtp, pwErr, otpErr, otpSent, onPasswordCheck, onOtpVerify, onClose, count}) {
+  const [visitors, setVisitors] = useState([]);
+  const [activeTab, setActiveTab] = useState('overview');
+  const [dateRange, setDateRange] = useState('7');
+
+  useEffect(()=>{ 
+    document.body.style.overflow='hidden'; 
+    setVisitors(VisitorSystem.getAll());
+    return()=>{ document.body.style.overflow=''; }; 
+  },[]);
+
+  const filteredVisitors = useMemo(() => {
+    const days = parseInt(dateRange);
+    const cutoff = new Date();
+    cutoff.setDate(cutoff.getDate() - days);
+    return visitors.filter(v => new Date(v.date) >= cutoff);
+  }, [visitors, dateRange]);
+
+  const stats = useMemo(() => {
+    const data = filteredVisitors.length ? filteredVisitors : visitors;
+    return {
+      byDevice: data.reduce((a,v)=>{a[v.device]=(a[v.device]||0)+1;return a},{}),
+      byBrowser: data.reduce((a,v)=>{a[v.browser]=(a[v.browser]||0)+1;return a},{}),
+      byOS: data.reduce((a,v)=>{a[v.os]=(a[v.os]||0)+1;return a},{}),
+      byDay: data.reduce((a,v)=>{a[v.day]=(a[v.day]||0)+1;return a},{}),
+      names: [...new Set(data.map(v=>v.name))],
+      recent: data.slice(0,15)
+    };
+  }, [filteredVisitors, visitors]);
+
+  const dashTabs = ['overview','visitors','devices','export'];
+
+  return (
+    <div style={{position:'fixed',inset:0,zIndex:900,background:'rgba(4,8,15,0.97)',
+      backdropFilter:'blur(24px)',overflowY:'auto',display:'flex',alignItems:'flex-start',
+      justifyContent:'center',padding:'40px 20px'}} onClick={e=>e.target===e.currentTarget&&onClose()}>
+      <div style={{background:c.card,border:`1px solid ${c.border2}`,borderRadius:24,maxWidth:1000,
+        width:'100%',padding:40,position:'relative'}}>
+        <button onClick={onClose} style={{position:'absolute',top:20,right:24,background:'none',
+          border:`1px solid ${c.border}`,borderRadius:'50%',width:44,height:44,cursor:'none',
+          color:c.text,fontSize:20,display:'flex',alignItems:'center',justifyContent:'center',
+          transition:'all .2s'}}
+          onMouseEnter={e=>{e.currentTarget.style.borderColor=c.gold;e.currentTarget.style.color=c.gold}}
+          onMouseLeave={e=>{e.currentTarget.style.borderColor=c.border;e.currentTarget.style.color=c.text}}>✕</button>
+
+        <div style={{fontFamily:"'Cinzel',serif",fontSize:28,fontWeight:700,color:c.gold,marginBottom:6}}>
+          📊 Visitor Analytics
+        </div>
+        <div style={{fontSize:12,color:c.muted,marginBottom:32,fontStyle:'italic',display:'flex',alignItems:'center',gap:12}}>
+          <span style={{width:8,height:8,borderRadius:'50%',background:c.danger,display:'inline-block'}}></span>
+          Owner-only dashboard · {count} total visits recorded
+        </div>
+
+        {step !== 'unlocked' ? (
+          <div style={{maxWidth:420,margin:'0 auto',textAlign:'center',padding:'30px 0'}}>
+            {step === 'password' ? (
+              <div style={{animation:'fadeUp .5s ease'}}>
+                <div style={{width:64,height:64,borderRadius:'50%',background:c.gold2,border:`1px solid ${c.goldB}`,display:'flex',alignItems:'center',justifyContent:'center',margin:'0 auto 24px',fontSize:28}}>🔐</div>
+                <p style={{fontSize:15,color:c.muted,lineHeight:1.9,marginBottom:28,fontStyle:'italic'}}>
+                  This analytics dashboard is secured with two-factor authentication.<br/>Enter your owner password to proceed.
+                </p>
+                <input type="password" value={pw} onChange={e=>setPw(e.target.value)}
+                  onKeyDown={e=>e.key==='Enter'&&onPasswordCheck()}
+                  placeholder="Enter owner password..." style={{...css.input, marginBottom:16, textAlign:'center', fontSize:14}}/>
+                <MagneticButton style={{...css.btn, width:'100%'}} onClick={onPasswordCheck}>
+                  Continue →
+                </MagneticButton>
+                {pwErr&&<div style={{color:c.danger,fontSize:12,marginTop:14,animation:'fadeUp .3s ease'}}>Incorrect password. Try again.</div>}
+              </div>
+            ) : (
+              <div style={{animation:'fadeUp .5s ease'}}>
+                <div style={{width:64,height:64,borderRadius:'50%',background:c.gold2,border:`1px solid ${c.goldB}`,display:'flex',alignItems:'center',justifyContent:'center',margin:'0 auto 24px',fontSize:28}}>📱</div>
+                <p style={{fontSize:15,color:c.muted,lineHeight:1.9,marginBottom:12,fontStyle:'italic'}}>
+                  A one-time password has been generated.<br/>Enter it below to unlock the dashboard.
+                </p>
+                <div style={{background:c.bg2,border:`1px solid ${c.border}`,borderRadius:8,padding:'12px 16px',marginBottom:20,fontFamily:"'JetBrains Mono',monospace",fontSize:12,color:c.gold}}>
+                  {otpSent ? '✓ OTP generated (check console for testing)' : 'Generating OTP...'}
+                </div>
+                <input type="text" value={otp} onChange={e=>setOtp(e.target.value)}
+                  onKeyDown={e=>e.key==='Enter'&&onOtpVerify()}
+                  placeholder="Enter 6-digit OTP..." style={{...css.input, marginBottom:16, textAlign:'center', fontSize:14, letterSpacing:'8px'}}
+                  maxLength={6}/>
+                <div style={{display:'flex',gap:12}}>
+                  <button onClick={()=>{setStep('password');setPw('');setOtp('');}} style={{...css.btnGhost,flex:1}}>
+                    ← Back
+                  </button>
+                  <MagneticButton style={{...css.btn,flex:2}} onClick={onOtpVerify}>
+                    Verify & Unlock
+                  </MagneticButton>
+                </div>
+                {otpErr&&<div style={{color:c.danger,fontSize:12,marginTop:14,animation:'fadeUp .3s ease'}}>Invalid or expired OTP. Try again.</div>}
+              </div>
+            )}
+          </div>
+        ) : (
+          <div style={{animation:'fadeUp .5s ease'}}>
+            {/* Dashboard Tabs */}
+            <div style={{display:'flex',gap:4,marginBottom:28,borderBottom:`1px solid ${c.border}`,paddingBottom:4}}>
+              {dashTabs.map(tab=>[
+                <button key={tab} onClick={()=>setActiveTab(tab)}
+                  style={{padding:'10px 20px',background:activeTab===tab?c.accent3:'none',border:'none',borderRadius:8,
+                    color:activeTab===tab?c.gold:c.muted,fontSize:11,fontFamily:"'Inter',sans-serif",fontWeight:500,
+                    textTransform:'uppercase',letterSpacing:'1px',cursor:'none',transition:'all .3s'}}>
+                  {tab}
+                </button>
+              ])}
+            </div>
+
+            {/* Date Filter */}
+            <div style={{display:'flex',gap:8,marginBottom:24,alignItems:'center'}}>
+              <span style={{fontSize:11,color:c.muted,letterSpacing:'1px'}}>Period:</span>
+              {[{v:'7',l:'7 Days'},{v:'30',l:'30 Days'},{v:'90',l:'90 Days'},{v:'all',l:'All Time'}].map(opt=>[
+                <button key={opt.v} onClick={()=>setDateRange(opt.v)}
+                  style={{padding:'6px 14px',borderRadius:6,border:`1px solid ${dateRange===opt.v?c.goldB:c.border}`,
+                    background:dateRange===opt.v?c.accent3:'none',color:dateRange===opt.v?c.gold:c.muted,
+                    fontSize:11,cursor:'none',transition:'all .3s'}}>
+                  {opt.l}
+                </button>
+              ])}
+            </div>
+
+            {activeTab==='overview' && (
+              <div>
+                {/* KPI Cards */}
+                <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:16,marginBottom:28}}>
+                  {[
+                    {v:count,l:'Total Visits',icon:'👁️'},
+                    {v:stats.byDevice['Mobile']||0,l:'Mobile Users',icon:'📱'},
+                    {v:stats.byDevice['Desktop']||0,l:'Desktop Users',icon:'💻'},
+                    {v:stats.names.length,l:'Unique Names',icon:'👤'},
+                  ].map((k,i)=>[
+                    <div key={i} style={{background:c.bg2,border:`1px solid ${c.border}`,borderRadius:12,padding:24,textAlign:'center',transition:'all .3s'}}
+                      onMouseEnter={e=>{e.currentTarget.style.borderColor=c.border2;e.currentTarget.style.transform='translateY(-4px)'}}
+                      onMouseLeave={e=>{e.currentTarget.style.borderColor=c.border;e.currentTarget.style.transform='none'}}>
+                      <div style={{fontSize:28,marginBottom:8}}>{k.icon}</div>
+                      <div style={{fontFamily:"'Cinzel',serif",fontSize:32,fontWeight:700,color:c.gold}}>{k.v}</div>
+                      <div style={{fontSize:10,color:c.muted,marginTop:6,letterSpacing:'1px',textTransform:'uppercase'}}>{k.l}</div>
+                    </div>
+                  ])}
+                </div>
+
+                {/* Charts */}
+                <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:16,marginBottom:28}}>
+                  {[
+                    {title:'By Browser', data:stats.byBrowser},
+                    {title:'By OS', data:stats.byOS},
+                  ].map(chart=>[
+                    <div key={chart.title} style={{background:c.bg2,border:`1px solid ${c.border}`,borderRadius:12,padding:20}}>
+                      <div style={{fontSize:11,color:c.muted,letterSpacing:'2px',textTransform:'uppercase',marginBottom:16,fontWeight:500}}>{chart.title}</div>
+                      {Object.entries(chart.data).map(([k,v])=>[
+                        <div key={k} style={{marginBottom:12}}>
+                          <div style={{display:'flex',justifyContent:'space-between',fontSize:12,color:c.text,marginBottom:6,fontWeight:500}}>
+                            <span>{k}</span><span style={{color:c.gold,fontFamily:"'JetBrains Mono',monospace"}}>{v}</span>
+                          </div>
+                          <div style={{height:6,background:c.subtle,borderRadius:3,overflow:'hidden'}}>
+                            <div className="infometric-bar-fill" style={{width:`${Math.max(5,Math.round(v/count*100))}%`,background:`linear-gradient(90deg,${c.gold},${c.accent2})`,borderRadius:3}}></div>
+                          </div>
+                        </div>
+                      ])}
+                    </div>
+                  ])}
+                </div>
+              </div>
+            )}
+
+            {activeTab==='visitors' && (
+              <div>
+                <div style={{background:c.bg2,border:`1px solid ${c.border}`,borderRadius:12,overflow:'hidden'}}>
+                  <div style={{padding:'16px 20px',borderBottom:`1px solid ${c.border}`,display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+                    <span style={{fontSize:11,color:c.muted,letterSpacing:'2px',textTransform:'uppercase',fontWeight:500}}>Recent Visitors</span>
+                    <span style={{fontSize:11,color:c.gold,fontFamily:"'JetBrains Mono',monospace"}}>{stats.recent.length} shown</span>
+                  </div>
+                  <div style={{overflowX:'auto'}}>
+                    <table style={{width:'100%',borderCollapse:'collapse',fontSize:12,fontFamily:"'Inter',sans-serif"}}>
+                      <thead>
+                        <tr style={{background:c.card}}>
+                          {['Name','Date','Time','Device','Browser','OS','Screen'].map(h=>[
+                            <th key={h} style={{padding:'12px 14px',textAlign:'left',color:c.muted,fontWeight:500,
+                              letterSpacing:'1px',fontSize:10,textTransform:'uppercase',whiteSpace:'nowrap'}}>{h}</th>
+                          ])}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {stats.recent.length===0 ? (
+                          <tr><td colSpan={7} style={{padding:'30px',textAlign:'center',color:c.muted,fontStyle:'italic'}}>No visitor data in selected period</td></tr>
+                        ) : stats.recent.map((v,i)=>[
+                          <tr key={v.id} style={{borderTop:`1px solid ${c.border}`,background:i%2===0?'transparent':c.card}}>
+                            {[v.name,v.date,v.time,v.device,v.browser,v.os,v.screen].map((val,j)=>[
+                              <td key={j} style={{padding:'11px 14px',color:j===0?c.gold:c.text,whiteSpace:'nowrap',fontWeight:j===0?600:400}}>{val}</td>
+                            ])}
+                          </tr>
+                        ])}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab==='devices' && (
+              <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:16}}>
+                {[
+                  {title:'Device Breakdown', data:stats.byDevice},
+                  {title:'Day of Week', data:stats.byDay},
+                  {title:'Top Browsers', data:Object.entries(stats.byBrowser).sort((a,b)=>b[1]-a[1]).slice(0,5).reduce((a,[k,v])=>{a[k]=v;return a},{})},
+                ].map(chart=>[
+                  <div key={chart.title} style={{background:c.bg2,border:`1px solid ${c.border}`,borderRadius:12,padding:20}}>
+                    <div style={{fontSize:11,color:c.muted,letterSpacing:'2px',textTransform:'uppercase',marginBottom:16,fontWeight:500}}>{chart.title}</div>
+                    {Object.entries(chart.data).map(([k,v])=>[
+                      <div key={k} style={{marginBottom:10}}>
+                        <div style={{display:'flex',justifyContent:'space-between',fontSize:12,color:c.text,marginBottom:4}}>
+                          <span>{k}</span><span style={{color:c.gold}}>{v}</span>
+                        </div>
+                        <div style={{height:4,background:c.subtle,borderRadius:2}}>
+                          <div style={{height:'100%',width:`${Math.round(v/count*100)}%`,background:c.gold,borderRadius:2}}></div>
+                        </div>
+                      </div>
+                    ])}
+                  </div>
+                ])}
+              </div>
+            )}
+
+            {activeTab==='export' && (
+              <div style={{textAlign:'center',padding:'40px 20px'}}>
+                <div style={{width:64,height:64,borderRadius:'50%',background:c.gold2,border:`1px solid ${c.goldB}`,display:'flex',alignItems:'center',justifyContent:'center',margin:'0 auto 24px',fontSize:28}}>📥</div>
+                <div style={{fontFamily:"'Cinzel',serif",fontSize:20,fontWeight:600,color:c.gold,marginBottom:12}}>Export Data</div>
+                <div style={{fontSize:14,color:c.muted,marginBottom:28,maxWidth:400,margin:'0 auto 28px',lineHeight:1.8}}>
+                  Download all visitor data as a CSV spreadsheet for analysis in Excel, Google Sheets, or Power BI.
+                </div>
+                <MagneticButton style={css.btn} onClick={VisitorSystem.exportCSV}>
+                  ⬇ Export to CSV
+                </MagneticButton>
+                <div style={{marginTop:20,display:'flex',gap:12,justifyContent:'center'}}>
+                  <button onClick={()=>{if(confirm('Clear ALL visitor data? This cannot be undone.')){VisitorSystem.clearAll();setVisitors([]);}}} 
+                    style={{...css.btnGhost,fontSize:11,padding:'10px 20px'}}>
+                    🗑 Clear All Data
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  RENDER
+// ═══════════════════════════════════════════════════════════════
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
